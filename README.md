@@ -57,7 +57,7 @@ sway-wm - My tiling Sway configuration for Debian
     * After modifying the configuration, restart the service:
 
       ```shell
-      $ sudo systemctl restart iwd-connect-cfg
+      $ sudo systemctl restart iwd-connectd
       ````
 
   * **`Monitor & resolution:`**
