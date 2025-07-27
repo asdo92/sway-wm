@@ -16,12 +16,9 @@ administrador=$?
 if [ ${administrador} -eq 0 ] ; then
   rm -rf /etc/root
 else
-  echo ""
   echo "* nwg-wrapper install"
-  echo ""
   echo "* Administrator permissions are required"
-  echo ""
-  exit
+  exit 1
 fi
 
 # Install dependencies
