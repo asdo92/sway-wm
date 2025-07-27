@@ -34,6 +34,7 @@ sway-wm - My tiling Sway configuration for Debian
       $ sudo tar zxvf packages/iwd-connectd.tar.gz -C /
       $ sudo systemctl daemon-reload
       $ sudo systemctl enable iwd-connectd
+      $ sudo packages/nwg-wrapper-install.sh
       ````
 
 ### Configuration:
