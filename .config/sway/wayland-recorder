@@ -1,0 +1,79 @@
+#!/bin/bash
+
+export GTK_THEME=Arc-Dark
+FILEDIR=~/Recordings
+OPTION=()
+
+mkdir -p $FILEDIR
+#audio_sources=$(pw-dump | jq -r '.[] | select(.type == "source") | .name' | tr '\n' '|')
+audio_sources=$(pactl list sources short | awk '{print $2}' | tr '\n' '|')
+audio_sources="none|default|$audio_sources"
+
+values=$(zenity \
+  --title=wayland-recorder \
+  --text="Option" \
+  --forms \
+  --add-combo="Mode" \
+    --combo-values="Specific area|Specific window|All screen" \
+  --add-entry="time to wait[default: 0s]" \
+  --add-combo="Audio source" \
+    --combo-values="$audio_sources" \
+)
+
+result=$?
+
+mode=$(echo $values | cut -d '|' -f 1)
+wait=$(echo $values | cut -d '|' -f 2)
+audio_source=$(echo $values | cut -d '|' -f 3)
+
+if [ "$result" -eq 1 ]; then      # select cancel
+    echo "canceling"
+    exit
+fi
+
+if [ -z "$mode" ]; then       # select nothing
+    echo "mode is null"
+    zenity \
+        --title=wayland-recorder \
+        --width=200 \
+        --warning \
+        --text="Specific area"
+    exit
+fi
+
+if [ ! -z "$wait" ]; then
+    sleep $wait
+fi
+
+if [ "$mode" == "All screen" ]; then  # select All screen
+    GEO=""
+elif [ "$mode" == "Specific window" ]; then  # select specify window
+    GEO="$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp)"
+elif [ "$mode" == "Specific area" ]; then  # select specify area
+    GEO="$(slurp)"
+else                         # error
+    echo $mode
+    exit 1
+fi
+
+# Recording
+name_record="$FILEDIR/Recording_$(date +%F_%H.%M.%S).mp4"
+
+if [ -z "$GEO" ]; then
+    if [ "$audio_source" != "none" ]; then
+        foot -T wf-recorder wf-recorder -f "$name_record" -a"$audio_source"
+    else
+        foot -T wf-recorder wf-recorder -f "$name_record"
+    fi
+else
+    if [ "$audio_source" != "none" ]; then
+        foot -T wf-recorder wf-recorder -g "$GEO" -f "$name_record" -a"$audio_source"
+    else
+        foot -T wf-recorder wf-recorder -g "$GEO" -f "$name_record"
+    fi
+fi
+
+# Play recording
+if [ -f /usr/bin/mpv ]; then
+    mpv "$name_record"
+fi

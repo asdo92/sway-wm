@@ -1,0 +1,119 @@
+#!/bin/bash
+
+##################################################################
+# wofi_drun - wofi-dmenu script that simulates 'rofi -show drun' #
+#                                                                #
+# Author: q3aql <q3aql@duck.com>                                 #
+# Last update: 04-01-2023                                        #
+##################################################################
+
+# Configuration variables
+load_theme_path="${HOME}/.wofi"
+load_desktop_files="${HOME}/.wofi/desktop"
+desktop_files="/usr/share/applications"
+desktop_files_home="${HOME}/.local/share/applications"
+desktop_flatpak="/var/lib/flatpak/exports/share/applications"
+desktop_flatpak_home="${HOME}/.local/share/flatpak/exports/share/applications"
+
+function generate_spaces() {
+  num_spaces=${1}
+  count_spaces=1
+  while [ ${count_spaces} -le ${num_spaces} ] ; do
+    echo -n " "
+    count_spaces=$(expr ${count_spaces} + 1)
+  done
+}
+
+function list_desktop_files() {
+  if [ -d "${desktop_files}" ] ; then
+    ls -1 "${desktop_files}/" | grep ".desktop"
+  fi
+  if [ -d "${desktop_files_home}" ] ; then
+    ls -1 "${desktop_files_home}/" | grep ".desktop"
+  fi
+  if [ -d "${desktop_flatpak}" ] ; then
+    ls -1 "${desktop_flatpak}/" | grep ".desktop"
+  fi
+  if [ -d "${desktop_flatpak_home}" ] ; then
+    ls -1 "${desktop_flatpak_home}/" | grep ".desktop"
+  fi
+}
+
+function list_desktop_icons() {
+  echo "   Scan New Desktop Files"
+  ls -1 "${load_desktop_files}/" | while read current_desktop ; do
+    echo "   ${current_desktop}"
+  done
+  generate_spaces 75
+}
+
+rundesk () {
+  if [ -z ${1} ] ; then
+    echo "No file entry"
+  else
+    if [ -f "${1}" ] ; then
+      eval "$(awk -F= '$1=="Exec"{$1=""; print}' "$1" | head -1)"
+    else
+      echo "File does not exist"
+    fi
+  fi
+}
+
+function create_list_files() {
+  mkdir -p ${load_desktop_files}
+  mkdir -p ${HOME}/.dmenu
+  if [ ! -f ${HOME}/.dmenu/read_list ] ; then
+    echo "0" > ${HOME}/.dmenu/read_list
+  fi
+  exec_list=$(cat ${HOME}/.dmenu/read_list)
+  if [ ${exec_list} -eq 0 ] ; then
+    rm -rf ${load_desktop_files}/*
+    list_desktop_files | while read current_file ; do
+      if [ -f "${desktop_files}/${current_file}" ] ; then
+        name_show=$(cat "${desktop_files}/${current_file}" | grep "Name=" | head -1 | cut -d "=" -f 2 | sed 's/\//|/g')
+        if [ ! -z "${name_show}" ] ; then
+          echo "${desktop_files}/${current_file}" > "${load_desktop_files}/${name_show}"
+        fi
+      fi
+      if [ -f "${desktop_files_home}/${current_file}" ] ; then
+        name_show=$(cat "${desktop_files_home}/${current_file}" | grep "Name=" | head -1 | cut -d "=" -f 2 | sed 's/\//|/g')
+        if [ ! -z "${name_show}" ] ; then 
+          echo "${desktop_files_home}/${current_file}" > "${load_desktop_files}/${name_show}"
+        fi
+      fi
+      if [ -f "${desktop_flatpak}/${current_file}" ] ; then
+        name_show=$(cat "${desktop_flatpak}/${current_file}" | grep "Name=" | head -1 | cut -d "=" -f 2 | sed 's/\//|/g')
+        if [ ! -z "${name_show}" ] ; then
+          echo "${desktop_flatpak}/${current_file}" > "${load_desktop_files}/${name_show}"
+        fi
+      fi
+      if [ -f "${desktop_flatpak_home}/${current_file}" ] ; then
+        name_show=$(cat "${desktop_flatpak_home}/${current_file}" | grep "Name=" | head -1 | cut -d "=" -f 2 | sed 's/\//|/g')
+        if [ ! -z "${name_show}" ] ; then
+          echo "${desktop_flatpak_home}/${current_file}" > "${load_desktop_files}/${name_show}"
+        fi
+      fi
+    done
+    echo "1" > ${HOME}/.dmenu/read_list 
+  fi
+}
+
+if [ -f /usr/bin/dex ] ; then
+  runDesktop="dex"
+else
+  runDesktop="rundesk"
+fi
+
+create_list_files
+list_output=$(list_desktop_icons | wofi --dmenu -i -p "  drun")
+run_output=$(echo ${list_output} | cut -c 5-999)
+if [ ! -z "${run_output}" ] ; then
+  if [ "${run_output}" == "Scan New Desktop Files" ] ; then
+    echo "0" > ${HOME}/.dmenu/read_list
+    create_list_files
+    $0
+  else
+    run_desktop_file=$(cat "${load_desktop_files}/${run_output}")
+    ${runDesktop} "${run_desktop_file}"
+  fi
+fi

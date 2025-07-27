@@ -1,0 +1,9 @@
+# settings
+
+(GimpGegl-gegl-apply-lens-config "2022-05-04 19:57:31"
+    (time 1651687051)
+    (refraction-index 4.8319999999999999)
+    (keep-surroundings no)
+    (background-color (color-rgba 0.18454935622317592 0.18454935622317592 0.18454935622317592 1)))
+
+# end of settings

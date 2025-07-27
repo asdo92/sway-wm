@@ -1,0 +1,9 @@
+[Unit]
+Description=Portal service
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+BusName=org.freedesktop.portal.Desktop
+ExecStart=/usr/libexec/xdg-desktop-portal
+Slice=session.slice

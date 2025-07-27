@@ -1,0 +1,47 @@
+#!/bin/bash
+
+####################################################################
+# wofi_wrun - wofi-dmenu script that simulates 'rofi -show window' #
+#                                                                  #
+# Author: q3aql <q3aql@duck.com>                                   #
+# Last update: 04-01-2023                                          #
+####################################################################
+
+# Configuration variables
+load_theme_path="${HOME}/.wofi"
+
+function generate_spaces() {
+  num_spaces=${1}
+  count_spaces=1
+  while [ ${count_spaces} -le ${num_spaces} ] ; do
+    echo -n " "
+    count_spaces=$(expr ${count_spaces} + 1)
+  done
+}
+
+function check_wmctrl() {
+  wmctrl -h &> /dev/null
+  error=$?
+  if [ ${error} -ne 0 ] ; then
+    echo "   Error: You need install 'wmctrl'" | wofi --dmenu -p "  window"
+    exit
+  fi
+}
+
+function list_applications_icons() {
+  wmctrl -l | while read current_app ; do
+    echo "   ${current_app}"
+  done
+  generate_spaces 75
+}
+
+check_wmctrl
+list_output=$(list_applications_icons | wofi --dmenu -i -p "  window")
+run_output=$(echo ${list_output} | cut -c 5-999)
+echo "# Selected: ${run_output}"
+run_output=$(echo "${run_output}" | cut -d " " -f 1)
+if [ -z "${run_output}" ] ; then
+  echo "# Selection window canceled"
+else
+  wmctrl -ia "${run_output}" &> /dev/null
+fi

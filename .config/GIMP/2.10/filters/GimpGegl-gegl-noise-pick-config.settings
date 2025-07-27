@@ -1,0 +1,9 @@
+# settings
+
+(GimpGegl-gegl-noise-pick-config "2024-12-10 02:01:41"
+    (time 1733792501)
+    (pct-random 50)
+    (repeat 1)
+    (seed 0))
+
+# end of settings

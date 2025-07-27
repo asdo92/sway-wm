@@ -1,0 +1,13 @@
+# settings
+
+(GimpGegl-gegl-long-shadow-config "2022-05-04 20:05:15"
+    (time 1651687515)
+    (style finite)
+    (angle -144)
+    (length 12.799999999999997)
+    (midpoint 100)
+    (midpoint-rel 0.77100000000000002)
+    (color (color-rgba 0.13221188466745401 0.23004153386901141 0.36480686695278974 1))
+    (composition shadow-plus-image))
+
+# end of settings

@@ -1,0 +1,82 @@
+#!/bin/bash
+
+export GTK_THEME=Arc-Dark
+FILEDIR=~/Screenshots
+OPTION=()
+
+mkdir -p $FILEDIR
+values=$(zenity \
+  --title=wayland-screenshot \
+  --text="Option" \
+  --forms \
+  --add-combo="Mode" \
+    --combo-values="Specific area|Specific window|All screen" \
+  --add-combo="Include cursor[default: no]" \
+    --combo-values="no|yes" \
+    --add-entry="time to wait[default: 0s]" \
+    --add-combo="Copy to clipboard[default: no]" \
+    --combo-values="no|yes" \
+      )
+
+result=$?
+
+mode=$(echo $values | cut -d '|' -f 1)
+cursor=$(echo $values | cut -d '|' -f 2)
+wait=$(echo $values | cut -d '|' -f 3)
+clipboard=$(echo $values | cut -d '|' -f 4)
+
+if [ "$result" -eq 1 ];then      # select cancel
+	echo "canceling"
+	exit
+fi
+
+if [ ! -z "$cursor" ] &&  [ "$cursor" == yes ];then
+	OPTION+="-c"
+fi
+
+if [ -z "$mode" ] ;then       # select nothing
+	echo "mode is null"
+	zenity \
+		--title=wayland-screenshot \
+		--width=200 \
+		--warning \
+		--text="Specific area"
+	exit
+fi
+
+if [ ! -z "$wait" ];then
+	sleep $wait
+fi
+
+if [ "$mode" == "All screen" ];then  # select All screen
+	true
+elif [ "$mode" == "Specific window" ];then  # select specify window
+	GEO="$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp)"
+elif [ "$mode" == "Specific area" ];then  # select specfy area
+	GEO="$(slurp)"
+else                         # error
+	echo $mode
+fi
+
+if [ -z "$clipboard" ] || [ "$clipboard" == yes ];then
+	if [ -z "$GEO" ]; then
+		grim $OPTION - | wl-copy;
+	else
+		grim $OPTION -g "$GEO" - | wl-copy;
+	fi
+else
+	if [ -z "$GEO" ]; then
+    name_screenshot="$FILEDIR/Screenshot_$(date +%F_%H.%M.%S).png"
+		grim $OPTION "$name_screenshot"
+    if [ -f /usr/bin/ristretto ] ; then
+      ristretto "$name_screenshot"
+    fi
+	else
+    name_screenshot="$FILEDIR/Screenshot_$(date +%F_%H.%M.%S).png"
+		grim $OPTION -g "$GEO" "$name_screenshot"
+    if [ -f /usr/bin/ristretto ] ; then
+      ristretto "$name_screenshot"
+    fi
+	fi
+fi
+
