@@ -23,8 +23,8 @@ sway-wm - My tiling Sway configuration for Debian
 
     ```shell
     curl -L "https://git.q3aql.dev/q3aql/sway-wm/raw/branch/master/packages/nwg-wrapper-install.sh" | sudo bash
-    curl -L "https://git.q3aql.dev/q3aql/sway-wm/raw/branch/master/packages/ubuntumono-nerd-fonts.tar.gz" | sudo tar -zxvf - -C / 
-    curl -L "https://git.q3aql.dev/q3aql/sway-wm/raw/branch/master/packages/iwd-connectd.tar.gz" | sudo tar -zxvf - -C / 
+    curl -L "https://git.q3aql.dev/q3aql/sway-wm/raw/branch/master/packages/ubuntumono-nerd-fonts.tar.gz" | sudo tar -zxvf - -C /
+    curl -L "https://git.q3aql.dev/q3aql/sway-wm/raw/branch/master/packages/iwd-connectd.tar.gz" | sudo tar -zxvf - -C /
     curl -L "https://telegram.org/dl/desktop/linux" | sudo tar -Jxvf - -C /opt/
     sudo ln -s /opt/Telegram/Telegram /usr/bin/telegram
     sudo systemctl daemon-reload
@@ -39,7 +39,7 @@ sway-wm - My tiling Sway configuration for Debian
       git clone https://git.q3aql.dev/q3aql/sway-wm
       cd sway-wm
       cp -rfv .config ~/
-      echo "export QT_QPA_PLATFORMTHEME=qt5ct" >> ~/.bashrc 
+      echo "export QT_QPA_PLATFORMTHEME=qt5ct" >> ~/.bashrc
       ````
 
 ### Configuration:
