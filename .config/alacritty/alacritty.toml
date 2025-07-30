@@ -51,13 +51,16 @@ blinking = "Always"
 shape = "Beam"
 
 [font]
-size = 10
+size = 11.4
 
 [font.bold]
-family = "mono"
+family = "UbuntuMono Nerd Font"
+style = "Bold"
 
 [font.italic]
-family = "mono"
+family = "UbuntuMono Nerd Font"
+style = "Italic"
 
 [font.normal]
-family = "mono"
+family = "UbuntuMono Nerd Font"
+style = "Regular"

@@ -43,12 +43,15 @@ colors:
     foreground: '0x0d1210'
     background: '0xc5c8c6'
 font:
-  bold:
-    family: mono
-  italic:
-    family: mono
   normal:
-    family: mono
-  size: 10
+    family: "UbuntuMono Nerd Font"
+    style: Regular
+  bold:
+    family: "UbuntuMono Nerd Font"
+    style: Bold
+  italic:
+    family: "UbuntuMono Nerd Font"
+    style: Italic
+  size: 11.4
 
 window.opacity: 1.0
