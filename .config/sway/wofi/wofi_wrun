@@ -19,23 +19,23 @@ function generate_spaces() {
   done
 }
 
-function check_wmctrl() {
-  wmctrl -h &> /dev/null
+function check_dependencies() {
+  swaymsg &> /dev/null
   error=$?
   if [ ${error} -ne 0 ] ; then
-    echo "   Error: You need install 'wmctrl'" | wofi --dmenu -p "  window"
+    echo "   Error: You need install 'swaymsg'" | wofi --dmenu -p "  window"
     exit
   fi
 }
 
 function list_applications_icons() {
-  wmctrl -l | while read current_app ; do
+  swaymsg -t get_tree | jq -r '.. | .nodes?[]? | select(.type == "con" and .focused == false and .name != null) | .name' | while read current_app ; do
     echo "   ${current_app}"
   done
   generate_spaces 75
 }
 
-check_wmctrl
+check_dependencies
 list_output=$(list_applications_icons | wofi -s ~/.config/wofi/wofi.css --dmenu -i -p "  window")
 run_output=$(echo ${list_output} | cut -c 5-999)
 echo "# Selected: ${run_output}"
@@ -43,5 +43,5 @@ run_output=$(echo "${run_output}" | cut -d " " -f 1)
 if [ -z "${run_output}" ] ; then
   echo "# Selection window canceled"
 else
-  wmctrl -ia "${run_output}" &> /dev/null
+  swaymsg "[title=\"${run_output}\"] focus" &> /dev/null
 fi
