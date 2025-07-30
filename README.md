@@ -11,25 +11,25 @@ sway-wm - My tiling Sway configuration for Debian
   
     * Install the packages necessary for sway to function properly:
 
-    ```shell
-    sudo apt install sway swaylock swaybg swayidle sway-backgrounds lxappearance \
-    nwg-look nwg-displays python3 python3-tk python3-psutil zenity pulseaudio-utils \
-    pipewire pipewire-pulse slurp foot alacritty kitty mpv wf-recorder wl-clipboard \
-    wlr-randr wdisplays ristretto grim arc-theme papirus-icon-theme adwaita-icon-theme \
-    adwaita-qt6 adwaita-qt qt5ct qt6ct wofi keepassxc electron-mail clipman pcmanfm \
-    geany firefox xarchiver iwd fonts-noto fonts-noto-core fonts-noto-extra fonts-noto-mono \
-    xdg-desktop-portal-gtk xdg-desktop-portal xdg-desktop-portal-wlr wmctrl dex fonts-liberation
-    ````
+      ```shell
+      sudo apt install sway swaylock swaybg swayidle sway-backgrounds lxappearance \
+      nwg-look nwg-displays python3 python3-tk python3-psutil zenity pulseaudio-utils \
+      pipewire pipewire-pulse slurp foot alacritty kitty mpv wf-recorder wl-clipboard \
+      wlr-randr wdisplays ristretto grim arc-theme papirus-icon-theme adwaita-icon-theme \
+      adwaita-qt6 adwaita-qt qt5ct qt6ct wofi keepassxc electron-mail clipman pcmanfm \
+      geany firefox xarchiver iwd fonts-noto fonts-noto-core fonts-noto-extra fonts-noto-mono \
+      xdg-desktop-portal-gtk xdg-desktop-portal xdg-desktop-portal-wlr wmctrl dex fonts-liberation
+      ````
 
-    ```shell
-    curl -L "https://git.q3aql.dev/q3aql/sway-wm/raw/branch/master/packages/nwg-wrapper-install.sh" | sudo bash
-    curl -L "https://git.q3aql.dev/q3aql/sway-wm/raw/branch/master/packages/ubuntumono-nerd-fonts.tar.gz" | sudo tar -zxvf - -C /
-    curl -L "https://git.q3aql.dev/q3aql/sway-wm/raw/branch/master/packages/iwd-connectd.tar.gz" | sudo tar -zxvf - -C /
-    curl -L "https://telegram.org/dl/desktop/linux" | sudo tar -Jxvf - -C /opt/
-    sudo ln -s /opt/Telegram/Telegram /usr/bin/telegram
-    sudo systemctl daemon-reload
-    sudo systemctl enable iwd-connectd
-    ````
+      ```shell
+      curl -L "https://git.q3aql.dev/q3aql/sway-wm/raw/branch/master/packages/nwg-wrapper-install.sh" | sudo bash
+      curl -L "https://git.q3aql.dev/q3aql/sway-wm/raw/branch/master/packages/ubuntumono-nerd-fonts.tar.gz" | sudo tar -zxvf - -C /
+      curl -L "https://git.q3aql.dev/q3aql/sway-wm/raw/branch/master/packages/iwd-connectd.tar.gz" | sudo tar -zxvf - -C /
+      curl -L "https://telegram.org/dl/desktop/linux" | sudo tar -Jxvf - -C /opt/
+      sudo ln -s /opt/Telegram/Telegram /usr/bin/telegram
+      sudo systemctl daemon-reload
+      sudo systemctl enable iwd-connectd
+      ````
  
   * **`Install configuration (dotfiles):`**
   
