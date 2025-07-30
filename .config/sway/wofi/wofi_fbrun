@@ -57,7 +57,7 @@ function remove_icon() {
 
 file=1
 while [ "${file}" ]; do
-  file_icon=$(show_icon_tree | wofi --dmenu -i -p "  filebrowser: $(basename $(pwd))")
+  file_icon=$(show_icon_tree | wofi -s ~/.config/wofi/wofi.css --dmenu -i -p "  filebrowser: $(basename $(pwd))")
   file=$(remove_icon "${file_icon}")
   echo "# ${file} #"
   if [ -e "${file}" ]; then

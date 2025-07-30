@@ -47,6 +47,6 @@ function list_binaries_icons() {
   generate_spaces 75
 }
 
-list_output=$(list_binaries_icons | wofi --dmenu -i -p "  run")
+list_output=$(list_binaries_icons | wofi -s ~/.config/wofi/wofi.css --dmenu -i -p "  run")
 run_output=$(echo "${list_output}" | cut -c4-999)
 ${run_output}

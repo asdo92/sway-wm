@@ -36,7 +36,7 @@ function list_applications_icons() {
 }
 
 check_wmctrl
-list_output=$(list_applications_icons | wofi --dmenu -i -p "  window")
+list_output=$(list_applications_icons | wofi -s ~/.config/wofi/wofi.css --dmenu -i -p "  window")
 run_output=$(echo ${list_output} | cut -c 5-999)
 echo "# Selected: ${run_output}"
 run_output=$(echo "${run_output}" | cut -d " " -f 1)
