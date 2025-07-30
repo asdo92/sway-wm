@@ -38,7 +38,8 @@ sway-wm - My tiling Sway configuration for Debian
       ```shell
       git clone https://git.q3aql.dev/q3aql/sway-wm
       cd sway-wm
-      cp -rfv .config ~/
+      cp -rf .config ~/
+      cp -rf wallpapers ~/
       echo "export QT_QPA_PLATFORMTHEME=qt5ct" >> ~/.bashrc
       ````
 
