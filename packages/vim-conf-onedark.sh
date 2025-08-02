@@ -143,12 +143,13 @@ if [ ! -d ${lightline_fdr} ] ; then
   exit
 fi
 echo ""
-echo -n "# Do you want to install the lightline? (Y/n): " ; read custom_lightline
-if [ "${custom_lightline}" == "n" ] ; then
-  lightline=0
-else
-  lightline=1
-fi
+#echo -n "# Do you want to install the lightline? (Y/n): " ; read custom_lightline
+#if [ "${custom_lightline}" == "n" ] ; then
+#  lightline=0
+#else
+#  lightline=1
+#fi
+lightline=1
 list_users=$(ls -1 /home)
 list_users="root ${list_users}"
 for current_user in ${list_users} ; do
