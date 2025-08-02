@@ -12,7 +12,7 @@ sway-wm - My tiling Sway configuration for Debian
     * Install the packages necessary for sway to function properly:
 
       ```shell
-      sudo apt install sway swaylock swaybg swayidle sway-backgrounds lxappearance \
+      sudo apt install sway swaylock swaybg swayidle sway-backgrounds lxappearance atril \
       nwg-look nwg-displays python3 python3-tk python3-psutil zenity pulseaudio-utils \
       pipewire pipewire-pulse slurp foot alacritty kitty mpv wf-recorder wl-clipboard \
       wlr-randr wdisplays ristretto grim arc-theme papirus-icon-theme adwaita-icon-theme \
