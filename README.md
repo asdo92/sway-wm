@@ -23,7 +23,7 @@ sway-wm - My tiling Sway configuration for Debian
 
       ```shell
       curl -L "https://gs.q3aql.dev/sway-wm/packages/nwg-wrapper-install.sh" | sudo bash
-      curl -L "https://q3aql.dev/vim/vimrc-install-linux-conf-onedark.sh" | sudo bash
+      curl -L "https://gs.q3aql.dev/sway-wm/packages/vim-conf-onedark.sh" | sudo bash
       curl -L "https://gs.q3aql.dev/sway-wm/packages/um-nerd-fonts.tar.gz" | sudo tar -zxvf - -C /
       curl -L "https://gs.q3aql.dev/sway-wm/packages/iwd-connectd.tar.gz" | sudo tar -zxvf - -C /
       curl -L "https://telegram.org/dl/desktop/linux" | sudo tar -Jxvf - -C /opt/
