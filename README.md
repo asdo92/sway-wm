@@ -12,7 +12,7 @@ sway-wm - My tiling Sway configuration for Debian
     * Install the packages necessary for sway to function properly:
 
       ```shell
-      sudo apt install sway swaylock swaybg swayidle sway-backgrounds lxappearance atril \
+      sudo apt install sway swaylock swaybg swayidle sway-backgrounds lxappearance atril vim \
       nwg-look nwg-displays python3 python3-tk python3-psutil zenity pulseaudio-utils bash \
       pipewire pipewire-pulse slurp foot alacritty kitty wf-recorder wl-clipboard coreutils \
       wlr-randr wdisplays ristretto grim arc-theme papirus-icon-theme adwaita-icon-theme mpv \
@@ -22,9 +22,10 @@ sway-wm - My tiling Sway configuration for Debian
       ````
 
       ```shell
-      curl -L "https://git.q3aql.dev/q3aql/sway-wm/raw/branch/master/packages/nwg-wrapper-install.sh" | sudo bash
-      curl -L "https://git.q3aql.dev/q3aql/sway-wm/raw/branch/master/packages/ubuntumono-nerd-fonts.tar.gz" | sudo tar -zxvf - -C /
-      curl -L "https://git.q3aql.dev/q3aql/sway-wm/raw/branch/master/packages/iwd-connectd.tar.gz" | sudo tar -zxvf - -C /
+      curl -L "https://gs.q3aql.dev/q3aql/sway-wm/packages/nwg-wrapper-install.sh" | sudo bash
+      curl -L "https://q3aql.dev/vim/vimrc-install-linux-conf-onedark.sh" | sudo bash
+      curl -L "https://gs.q3aql.dev/q3aql/sway-wm/packages/ubuntumono-nerd-fonts.tar.gz" | sudo tar -zxvf - -C /
+      curl -L "https://gs.q3aql.dev/q3aql/sway-wm/packages/iwd-connectd.tar.gz" | sudo tar -zxvf - -C /
       curl -L "https://telegram.org/dl/desktop/linux" | sudo tar -Jxvf - -C /opt/
       sudo ln -s /opt/Telegram/Telegram /usr/bin/telegram
       sudo systemctl daemon-reload
