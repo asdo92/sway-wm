@@ -13,12 +13,12 @@ sway-wm - My tiling Sway configuration for Debian
 
       ```shell
       sudo apt install sway swaylock swaybg swayidle sway-backgrounds lxappearance atril \
-      nwg-look nwg-displays python3 python3-tk python3-psutil zenity pulseaudio-utils \
-      pipewire pipewire-pulse slurp foot alacritty kitty mpv wf-recorder wl-clipboard \
-      wlr-randr wdisplays ristretto grim arc-theme papirus-icon-theme adwaita-icon-theme \
-      adwaita-qt6 adwaita-qt qt5ct qt6ct wofi keepassxc electron-mail clipman pcmanfm jq \
+      nwg-look nwg-displays python3 python3-tk python3-psutil zenity pulseaudio-utils bash \
+      pipewire pipewire-pulse slurp foot alacritty kitty wf-recorder wl-clipboard coreutils \
+      wlr-randr wdisplays ristretto grim arc-theme papirus-icon-theme adwaita-icon-theme mpv \
+      adwaita-qt6 adwaita-qt qt5ct qt6ct wofi keepassxc electron-mail clipman pcmanfm jq dex \
       geany firefox xarchiver iwd fonts-noto fonts-noto-core fonts-noto-extra fonts-noto-mono \
-      xdg-desktop-portal-gtk xdg-desktop-portal xdg-desktop-portal-wlr wmctrl dex fonts-liberation
+      xdg-desktop-portal-gtk xdg-desktop-portal xdg-desktop-portal-wlr wmctrl fonts-liberation
       ````
 
       ```shell
