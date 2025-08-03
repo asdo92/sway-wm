@@ -1,4 +1,34 @@
 * {
-  font-family: 'UbuntuMono Nerd Font', sans-serif; /* Reemplaza 'TuFuente' con el nombre de la fuente que deseas */
-  font-size: 15px; /* Ajusta el tamaño de la fuente según tus preferencias */
+  font-family: 'UbuntuMono Nerd Font', sans-serif;
+  font-size: 15px;
 }
+
+window {
+  background-color: #222133;
+  border-radius: 0;
+  padding: 0;
+  spacing: 0;
+  border-width: 0;
+}
+
+#text {
+  color: #cccccc;
+} 
+
+#entry:selected {
+  background-color: #664477;                                                                                                                                                                                                                
+  color: #cccccc; 
+}
+
+#entry:selected * {
+  background-color: #664477;
+  color: #cccccc;
+}
+
+entry {
+  background-color: #222133;
+  color: #cccccc;
+  border: none;
+  border-radius: 0;
+}
+
