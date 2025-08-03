@@ -108,14 +108,13 @@ bindsym Mod1+Shift+e exec "swaynag -t warning -m 'You pressed the exit shortcut.
 set $mode_system System (l) lock, (e) logout, (r) reboot, (CTRL+s) shutdown
 
 mode "$mode_system" {
-    bindsym l exec --no-startup-id $swaylockwall, mode "default"
-    bindsym e exec --no-startup-id swaymsg exit, mode "default"
-    bindsym r exec --no-startup-id /sbin/reboot, mode "default"
-    bindsym Ctrl+s exec --no-startup-id /sbin/poweroff, mode "default"
-
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+  bindsym l exec --no-startup-id $swaylockwall, mode "default"
+  bindsym e exec --no-startup-id swaymsg exit, mode "default"
+  bindsym r exec --no-startup-id /sbin/reboot, mode "default"
+  bindsym Ctrl+s exec --no-startup-id /sbin/poweroff, mode "default"
+  # back to normal: Enter or Escape
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
 }
 
 bindsym $mod+BackSpace mode "$mode_system"
@@ -266,45 +265,37 @@ bindsym $mod+Shift+e exec "swaynag -t warning -m 'You pressed the exit shortcut.
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym ntilde resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+  bindsym j resize shrink width 10 px or 10 ppt
+  bindsym k resize grow height 10 px or 10 ppt
+  bindsym l resize shrink height 10 px or 10 ppt
+  bindsym ntilde resize grow width 10 px or 10 ppt
+  # same bindings, but for the arrow keys
+  bindsym Left resize shrink width 10 px or 10 ppt
+  bindsym Down resize grow height 10 px or 10 ppt
+  bindsym Up resize shrink height 10 px or 10 ppt
+  bindsym Right resize grow width 10 px or 10 ppt
+  # back to normal: Enter or Escape or $mod+r
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
 
 # Input layout
 input * {
-      #xkb_layout "us"
-      xkb_layout "es"
-      #xkb_variant "colemak"
-  }
+  #xkb_layout "us"
+  xkb_layout "es"
+  #xkb_variant "colemak"
+}
 
 # Load GTK3 for Wayland apps (Arc+Papirus Theme)
 set $gnome-schema org.gnome.desktop.interface
 exec_always {
-    gsettings set $gnome-schema gtk-theme 'Arc-Dark'
-    gsettings set $gnome-schema icon-theme 'Papirus-Dark'
-    gsettings set $gnome-schema cursor-theme 'Adwaita'
-    gsettings set $gnome-schema font-name 'Sans 10'
+  gsettings set $gnome-schema gtk-theme 'Arc-Dark'
+  gsettings set $gnome-schema icon-theme 'Papirus-Dark'
+  gsettings set $gnome-schema cursor-theme 'Adwaita'
+  gsettings set $gnome-schema font-name 'Sans 10'
 }
 
 
