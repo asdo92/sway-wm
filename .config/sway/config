@@ -310,11 +310,10 @@ exec_always {
 
 # Start swaybar to display a workspace bar
 bar {
-  #height 28
   position top
-  status_command ~/.config/sway/scripts/status_bar.sh
-  strip_workspace_numbers yes
-  #swaybar_command waybar
+  #status_command ~/.config/sway/scripts/status_bar.sh
+  strip_workspace_numbers no
+  swaybar_command waybar
   workspace_buttons yes
   tray_output HDMI-A-1
   colors {
