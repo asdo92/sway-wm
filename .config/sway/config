@@ -310,7 +310,7 @@ exec_always {
 
 # Start swaybar to display a workspace bar
 bar {
-  height 28
+  #height 28
   position top
   status_command ~/.config/sway/scripts/status_bar.sh
   strip_workspace_numbers yes
@@ -320,15 +320,15 @@ bar {
   colors {
     separator #AAAAAA
     background #222133
-    statusline #cccccc
-    focused_workspace #664477 #664477 #cccccc
-    active_workspace #5b399e #5b399e #cccccc
+    statusline #dddddd
+    focused_workspace #664477 #664477 #eeeeee
+    active_workspace #5b399e #5b399e #eeeeee
     inactive_workspace #222133 #222133 #AAAAAA
     urgent_workspace #CE4045 #CE4045 #FFFFFF
   }
 }
 
-client.focused #664477 #664477 #cccccc #5b399e
-client.focused_inactive #5b399e #5b399e #cccccc #A074C4
+client.focused #664477 #664477 #eeeeee #5b399e
+client.focused_inactive #5b399e #5b399e #eeeeee #A074C4
 client.unfocused #222133 #222133 #AAAAAA #A074C4
 client.urgent #CE4045 #CE4045 #5b399e #DCCD69
