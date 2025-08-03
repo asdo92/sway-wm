@@ -162,18 +162,18 @@ default_border pixel 2
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1:[term]"
-set $ws2 "2:[www]"
-set $ws3 "3:[chat]"
-set $ws4 "4:[files]"
-set $ws5 "5:[media]"
-set $ws6 "6:[game]"
-set $ws7 "7:[mail]"
-set $ws8 "8:[dev]"
-set $ws9 "9:[vm]"
-set $ws10 "10:[all]"
-set $ws11 "11:[mon]"
-set $ws12 "12:[any]"
+set $ws1 "1: "
+set $ws2 "2:,"
+set $ws3 "3: "
+set $ws4 "4: "
+set $ws5 "5: "
+set $ws6 "6: "
+set $ws7 "7: "
+set $ws8 "8: "
+set $ws9 "9: "
+set $ws10 "10: "
+set $ws11 "11: "
+set $ws12 "12: "
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -310,6 +310,7 @@ exec_always {
 
 # Start swaybar to display a workspace bar
 bar {
+  height 28
   position top
   status_command ~/.config/sway/scripts/status_bar.sh
   strip_workspace_numbers yes
