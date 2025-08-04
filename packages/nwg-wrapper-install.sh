@@ -1,10 +1,10 @@
 #!/bin/bash
 
-#################################################
-# Script to build and install i3-gaps on Debian #
-# Author: q3aql (q3aql@duck.com)                #
-# Last update: 09-01-2022                       #
-# ###############################################
+#####################################################
+# Script to build and install nwg-wrapper on Debian #
+# Author: q3aql (q3aql@duck.com)                    #
+# Last update: 01-07-2025                           #
+# ###################################################
 
 # Variables
 URL_Repo="https://github.com/nwg-piotr/nwg-wrapper.git"
