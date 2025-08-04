@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Configuration variables
+# Configuration variable
 python_bin="/usr/bin/python3"
 memfile="/proc/meminfo"
 size="G" # Change to M for MiB
@@ -40,6 +40,8 @@ else
   showMemActive="${memActiveG}Gi"
 fi
 
+echo -n " "
 memshowactive=$(echo ${showMemActive})
 memshowtotal=$(echo ${showMemTotal})
-echo ${memshowactive}/${memshowtotal}
+echo -n ${memshowactive}/${memshowtotal}
+echo " "
