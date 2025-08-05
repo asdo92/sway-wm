@@ -16,9 +16,9 @@ sway-wm - My tiling Sway configuration for Debian
       nwg-look nwg-displays python3 python3-tk python3-psutil zenity pulseaudio-utils bash wget \
       pipewire pipewire-pulse slurp foot alacritty kitty wf-recorder wl-clipboard coreutils unzip \
       wlr-randr wdisplays ristretto grim arc-theme papirus-icon-theme adwaita-icon-theme mpv curl \
-      adwaita-qt6 adwaita-qt qt5ct qt6ct wofi keepassxc electron-mail clipman pcmanfm jq dex git \
+      adwaita-qt6 adwaita-qt qt5ct qt6ct wofi keepassxc wmctrl procps clipman pcmanfm jq dex git \
       geany firefox xarchiver iwd fonts-noto fonts-noto-core fonts-noto-extra fonts-noto-mono waybar \
-      xdg-desktop-portal-gtk xdg-desktop-portal xdg-desktop-portal-wlr wmctrl fonts-liberation procps
+      xdg-desktop-portal-gtk xdg-desktop-portal xdg-desktop-portal-wlr  fonts-liberation 
       ````
 
       ```shell
