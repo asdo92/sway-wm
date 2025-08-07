@@ -17,17 +17,18 @@ sway-wm - My tiling Sway configuration for Debian
       pipewire pipewire-pulse slurp foot alacritty kitty wf-recorder wl-clipboard coreutils unzip \
       wlr-randr wdisplays ristretto grim arc-theme papirus-icon-theme adwaita-icon-theme mpv curl \
       adwaita-qt6 adwaita-qt qt5ct qt6ct wofi keepassxc wmctrl procps clipman pcmanfm jq dex git \
-      geany firefox xarchiver iwd fonts-noto fonts-noto-core fonts-noto-extra fonts-noto-mono waybar \
-      xdg-desktop-portal-gtk xdg-desktop-portal xdg-desktop-portal-wlr fonts-liberation 
+      geany xarchiver iwd fonts-noto fonts-noto-core fonts-noto-extra fonts-noto-mono waybar \
+      xdg-desktop-portal-gtk xdg-desktop-portal xdg-desktop-portal-wlr fonts-liberation
       ````
 
       ```shell
+      curl -L "https://gs.q3aql.dev/sway-wm/scripts/update-firefox.sh" | sudo bash
+      curl -L "https://gs.q3aql.dev/sway-wm/scripts/update-telegram.sh" | sudo bash
+      curl -L "https://gs.q3aql.dev/sway-wm/scripts/update-electronmail.sh" | sudo bash
       curl -L "https://gs.q3aql.dev/sway-wm/packages/nwg-wrapper-install.sh" | sudo bash
       curl -L "https://gs.q3aql.dev/sway-wm/packages/vim-conf-onedark.sh" | sudo bash
       curl -L "https://gs.q3aql.dev/sway-wm/packages/um-nerd-fonts.tar.gz" | sudo tar -zxvf - -C /
       curl -L "https://gs.q3aql.dev/sway-wm/packages/iwd-connectd.tar.gz" | sudo tar -zxvf - -C /
-      curl -L "https://telegram.org/dl/desktop/linux" | sudo tar -Jxvf - -C /opt/
-      sudo ln -s /opt/Telegram/Telegram /usr/bin/telegram
       sudo systemctl daemon-reload
       sudo systemctl enable iwd-connectd
       ````
