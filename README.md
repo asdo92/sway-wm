@@ -3,7 +3,7 @@ sway-wm - My tiling Sway configuration for Debian
 
 ### Screenshot:
 
-![sway](https://git.q3aql.dev/q3aql/sway-wm/raw/branch/master/examples/sway.png)
+![sway](/examples/sway.png)
 
 ### Installation:
 
@@ -18,7 +18,8 @@ sway-wm - My tiling Sway configuration for Debian
       wlr-randr wdisplays ristretto grim arc-theme papirus-icon-theme adwaita-icon-theme mpv curl \
       adwaita-qt6 adwaita-qt qt5ct qt6ct wofi keepassxc wmctrl procps clipman pcmanfm jq dex git \
       geany xarchiver iwd fonts-noto fonts-noto-core fonts-noto-extra fonts-noto-mono waybar \
-      xdg-desktop-portal-gtk xdg-desktop-portal xdg-desktop-portal-wlr fonts-liberation
+      xdg-desktop-portal-gtk xdg-desktop-portal xdg-desktop-portal-wlr fonts-liberation psmisc \
+      sway-notification-center
       ````
 
       ```shell
