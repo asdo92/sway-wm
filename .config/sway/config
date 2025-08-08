@@ -23,7 +23,7 @@ exec --no-startup-id systemctl --user restart pipewire
 exec --no-startup-id systemctl --user restart pipewire-pulse
 
 # Run notification
-exec --no-startup-id "killall swaync && sleep 2 && swaync &"
+exec --no-startup-id "killall swaync ; sleep 2 && swaync &"
 
 # Load Apps
 exec --no-startup-id "keepassxc &"
