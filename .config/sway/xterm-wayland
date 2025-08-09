@@ -1,5 +1,5 @@
 #!/bin/bash
 
 # Load xterm config on Wayland
-xrdb -load ~/.Xresources
+xrdb -load ~/.config/xterm/xtermrc
 xterm
