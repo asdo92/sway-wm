@@ -1,0 +1,35 @@
+! Configuración de fuente
+XTerm*faceName: UbuntuMono Nerd Font
+XTerm*faceSize: 12
+XTerm*boldFace: UbuntuMono Nerd Font
+XTerm*italicFace: UbuntuMono Nerd Font
+XTerm*boldItalicFace: UbuntuMono Nerd Font
+
+! Configuración del cursor
+XTerm*cursorColor: #cccccc
+XTerm*cursorShape: 2
+XTerm*cursorThickness: 1.8
+
+! Colores del tema
+XTerm*foreground: #abb2bf
+XTerm*background: #1e2127
+XTerm*color0: #282c34
+XTerm*color1: #d19a66
+XTerm*color2: #98c379
+XTerm*color3: #d19a66
+XTerm*color4: #61afef
+XTerm*color5: #c678dd
+XTerm*color6: #98c379
+XTerm*color7: #979eab
+XTerm*color8: #393e48
+XTerm*color9: #e06c75
+XTerm*color10: #98c379
+XTerm*color11: #c678dd
+XTerm*color12: #61afef
+XTerm*color13: #c678dd
+XTerm*color14: #56b6c2
+XTerm*color15: #abb2bf
+
+! Colores de selección
+XTerm*selectionForeground: #1e2127
+XTerm*selectionBackground: #abb2bf
