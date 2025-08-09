@@ -41,6 +41,7 @@ if [ -f /usr/bin/pacman ] ; then
   fi
   if [ ${listupdate} -ge ${listupdates_run} ] ; then
     num_packages=$(pacman -Qu | wc -l)
+    echo "0" > ${listupdates_file}
     echo "${num_packages}" > ${listupdates_show}
   fi
   echo " $(cat ${listupdates_show}) "
@@ -53,6 +54,7 @@ elif [ -f /usr/bin/apt ] ; then
   if [ ${listupdate} -ge ${listupdates_run} ] ; then
     num_packages=$(apt list --upgradable 2>/dev/null | grep -c ^)
     num_packages=$(expr ${num_packages} - 1)
+    echo "0" > ${listupdates_file}
     echo "${num_packages}" > ${listupdates_show}
   fi
   echo " $(cat ${listupdates_show}) "
