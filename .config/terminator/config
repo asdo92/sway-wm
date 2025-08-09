@@ -1,0 +1,34 @@
+[global_config]
+  focus = system
+  borderless = True
+  tab_position = hidden
+  broadcast_default = off
+  inactive_color_offset = 1.0
+  enabled_plugins = ,
+  ask_before_closing = never
+[keybindings]
+[profiles]
+  [[default]]
+    icon_bell = False
+    background_color = "#1e2127"
+    cursor_shape = ibeam
+    cursor_fg_color = "#1e2127"
+    cursor_bg_color = "#abb2bf"
+    cursor_color_default = False
+    font = UbuntuMono Nerd Font 11.399
+    foreground_color = "#c0bfbc"
+    show_titlebar = False
+    scrollbar_position = hidden
+    scrollback_infinite = True
+    palette = "#282c34:#d19a66:#98c379:#d19a66:#61afef:#c678dd:#98c379:#979eab:#393e48:#e06c75:#98c379:#c678dd:#61afef:#c678dd:#56b6c2:#abb2bf"
+    use_system_font = False
+    bold_is_bright = True
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+[plugins]
