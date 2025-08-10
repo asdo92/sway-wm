@@ -1,5 +1,14 @@
 #!/bin/bash
 
+mkdir -p /etc/root 2> /dev/null
+rootperm=$?
+if [ $rootperm -eq 0 ] ; then
+  rm -rf /etc/root
+else
+  echo "Root permission is required to run this script"
+  exit
+fi
+
 install_vim_gen(){
   version_download="${1}"
   echo "Downloading vim"

@@ -1,5 +1,14 @@
 #!/bin/bash
 
+mkdir -p /etc/root 2> /dev/null
+rootperm=$?
+if [ $rootperm -eq 0 ] ; then
+  rm -rf /etc/root
+else
+  echo "Root permission is required to run this script"
+  exit
+fi
+
 echo "Checking yt-dlp version"
 touch /etc/ytdlp_version.conf
 version_ytdlp=$(curl "https://github.com/yt-dlp/yt-dlp/releases" 2> /dev/null | grep "releases/tag" | head -1 | cut -d "=" -f 4 | cut -d "/" -f 6 | cut -d '"' -f 1 | cut -d "v" -f 2)

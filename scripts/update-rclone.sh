@@ -1,5 +1,19 @@
 #!/bin/bash
 
+mkdir -p /etc/root 2> /dev/null
+rootperm=$?
+if [ $rootperm -eq 0 ] ; then
+  rm -rf /etc/root
+else
+  echo "Root permission is required to run this script"
+  exit
+fi
+
+if [ ! -f /usr/bin/apt ] ; then
+  echo "This script is only for Debian-based systems"
+  exit
+fi
+
 echo "Checking rclone version"
 touch /etc/rclone_version.conf
 version_rclone=$(curl "https://rclone.org/downloads/" 2> /dev/null | grep "\"release\"" | cut -d ">" -f 2 | cut -d "<" -f 1)

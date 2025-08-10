@@ -1,5 +1,19 @@
 #!/bin/bash
 
+mkdir -p /etc/root 2> /dev/null
+rootperm=$?
+if [ $rootperm -eq 0 ] ; then
+  rm -rf /etc/root
+else
+  echo "Root permission is required to run this script"
+  exit
+fi
+
+if [ ! -f /usr/bin/apt ] ; then
+  echo "This script is only for Debian-based systems"
+  exit
+fi
+
 echo "Checking open-tv version"
 touch /etc/opentv_version.conf
 version_opentv=$(curl "https://github.com/Fredolx/open-tv/releases" 2> /dev/null | grep "releases/tag" | head -1 | cut -d "=" -f 4 | cut -d "/" -f 6 | cut -d '"' -f 1 | cut -d "v" -f 2)
