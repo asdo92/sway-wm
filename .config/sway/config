@@ -292,6 +292,9 @@ input * {
   #xkb_variant "colemak"
 }
 
+# set cursor theme for sway
+seat seat0 xcursor_theme Adwaita
+
 # Load GTK3 for Wayland apps (Arc+Papirus Theme)
 set $gnome-schema org.gnome.desktop.interface
 exec_always {
