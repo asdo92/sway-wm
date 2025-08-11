@@ -23,7 +23,7 @@ function check_dependencies() {
   swaymsg &> /dev/null
   error=$?
   if [ ${error} -ne 0 ] ; then
-    echo "   Error: You need install 'swaymsg'" | wofi --dmenu -p "  window"
+    echo "   Error: You need install 'swaymsg'" | wofi --dmenu -p "󰈞  window"
     exit
   fi
 }
@@ -36,7 +36,7 @@ function list_applications_icons() {
 }
 
 check_dependencies
-list_output=$(list_applications_icons | wofi -s ~/.config/wofi/wofi.css --dmenu -i -p "  window")
+list_output=$(list_applications_icons | wofi -s ~/.config/wofi/wofi.css --dmenu -i -p "󰈞  window")
 run_output=$(echo ${list_output} | cut -c 5-999)
 echo "# Selected: ${run_output}"
 run_output=$(echo "${run_output}" | cut -d " " -f 1)

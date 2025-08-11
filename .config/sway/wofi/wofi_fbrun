@@ -22,9 +22,9 @@ function generate_spaces() {
 function show_icon_tree() {
   ls -1 | while read current ; do
     if [ -f "${current}" ] ; then
-      echo "   ${current}"
+      echo "   ${current}"
     elif [ -d "${current}" ] ; then
-      echo "   ${current}"
+      echo "   ${current}"
     else
       echo "  ${current}"
     fi
@@ -35,11 +35,11 @@ function show_icon_tree() {
 function remove_icon() {
   entry="${@}"
   remove_icon_space=0
-  read_entry=$(echo "${entry}" | grep "  ")
+  read_entry=$(echo "${entry}" | grep "  ")
   if ! [ -z "${read_entry}" ] ; then
     remove_icon_space=1
   fi
-  read_entry=$(echo "${entry}" | grep "  ")
+  read_entry=$(echo "${entry}" | grep "  ")
   if ! [ -z "${read_entry}" ] ; then
     remove_icon_space=1
   fi
@@ -57,7 +57,7 @@ function remove_icon() {
 
 file=1
 while [ "${file}" ]; do
-  file_icon=$(show_icon_tree | wofi -s ~/.config/wofi/wofi.css --dmenu -i -p "  filebrowser: $(basename $(pwd))")
+  file_icon=$(show_icon_tree | wofi -s ~/.config/wofi/wofi.css --dmenu -i -p "󰈞  filebrowser: $(basename $(pwd))")
   file=$(remove_icon "${file_icon}")
   echo "# ${file} #"
   if [ -e "${file}" ]; then

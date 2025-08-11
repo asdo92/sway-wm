@@ -40,9 +40,9 @@ function list_desktop_files() {
 }
 
 function list_desktop_icons() {
-  echo "   Scan New Desktop Files"
+  echo "󰑓  Scan New Desktop Files"
   ls -1 "${load_desktop_files}/" | while read current_desktop ; do
-    echo "   ${current_desktop}"
+    echo "󰀻  ${current_desktop}"
   done
   generate_spaces 75
 }
@@ -105,8 +105,9 @@ else
 fi
 
 create_list_files
-list_output=$(list_desktop_icons | wofi -s ~/.config/wofi/wofi.css --dmenu -i -p "  drun")
-run_output=$(echo ${list_output} | cut -c 5-999)
+list_output=$(list_desktop_icons | wofi -s ~/.config/wofi/wofi.css --dmenu -i -p "󰈞  drun")
+run_output=$(echo ${list_output} | cut -c 6-999)
+echo "${run_output}"
 if [ ! -z "${run_output}" ] ; then
   if [ "${run_output}" == "Scan New Desktop Files" ] ; then
     echo "0" > ${HOME}/.dmenu/read_list
