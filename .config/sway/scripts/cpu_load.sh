@@ -11,7 +11,7 @@ VERSION="1.0"
 # Variables
 cpuPercentage=$(top -b -n1 | grep \%Cpu | awk '{print 100-$8}')
 showCpuPercentage=$(echo ${cpuPercentage})
-showCpuPercentageInteger=$(echo ${showCpuPercentage} | cut -d "." -f 1)
+showCpuPercentageInteger=$(echo ${showCpuPercentage} | sed 's/,/./g' |cut -d "." -f 1)
 
 # Show percentage bar
 if [ ${showCpuPercentageInteger} -ge 0 ] ; then
