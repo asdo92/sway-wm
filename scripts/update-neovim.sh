@@ -29,7 +29,7 @@ install_neovim_gen(){
     chmod +x /opt/nvim/bin/nvim
     unlink /usr/bin/vim
     ln -s /usr/bin/nvim /usr/bin/vim
-    cp -rf /tmp/nvim-linux-x86_64/share /usr/share/
+    cp -rf /tmp/nvim-linux-x86_64/share /usr/
   fi
   rm -rf /tmp/neovim.tar.gz
   rm -rf /tmp/nvim-linux-x86_64
