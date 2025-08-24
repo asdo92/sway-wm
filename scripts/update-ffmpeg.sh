@@ -35,6 +35,20 @@ install_ffmpeg_gen(){
   echo "Installation ffmpeg done"
 }
 
+install_alias_ffmpeg() {
+  ffmpeg -hide_banner -version &> /dev/null
+  error_banner=$?
+  if [ ${error_banner} -eq 0 ] ; then
+    echo "#!/bin/bash" > /etc/profile.d/ffmpeg.sh
+    echo "" >> /etc/profile.d/ffmpeg.sh
+    echo 'alias ffmpeg="ffmpeg -hide_banner"' >> /etc/profile.d/ffmpeg.sh
+    export alias ffmpeg="ffmpeg -hide_banner"
+    chmod +x /etc/profile.d/ffmpeg.sh
+  else
+    rm -rf /etc/profile.d/ffmpeg-hide-banner.sh
+  fi
+}
+
 echo "Checking ffmpeg version"
 touch /etc/ffmpeg_version.conf
 version_ffmpeg=$(curl "https://github.com/BtbN/FFmpeg-Builds/releases/tag/latest" 2> /dev/null | grep "<title>" | cut -d ">" -f 2 | cut -d "<" -f 1)
@@ -45,6 +59,7 @@ if [ "${version_ffmpeg}" != "${version_ffmpeg_current}" ] ; then
   error_install=$?
   if [ ${error_install} -eq 0 ] ; then
     echo "${version_ffmpeg}" > /etc/ffmpeg_version.conf
+    install_alias_ffmpeg
   fi
 else
   echo "No updates for ffmpeg"
