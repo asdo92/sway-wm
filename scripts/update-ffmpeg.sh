@@ -45,7 +45,7 @@ install_alias_ffmpeg() {
     export alias ffmpeg="ffmpeg -hide_banner"
     chmod +x /etc/profile.d/ffmpeg.sh
   else
-    rm -rf /etc/profile.d/ffmpeg-hide-banner.sh
+    rm -rf /etc/profile.d/ffmpeg.sh
   fi
 }
 
