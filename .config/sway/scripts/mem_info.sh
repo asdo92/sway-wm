@@ -40,7 +40,7 @@ else
   showMemActive="${memActiveG}Gi"
 fi
 
-echo -n " "
+echo -n "󰍛 "
 memshowactive=$(echo ${showMemActive})
 memshowtotal=$(echo ${showMemTotal})
 echo -n ${memshowactive}/${memshowtotal}
