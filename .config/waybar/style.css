@@ -91,6 +91,11 @@ window#waybar.chromium {
     margin: 0 1px;
 }
 
+#custom-battery {
+    color: #62bbfa;
+    margin: 0 1px;
+}
+
 #custom-cpu {
     color: #d26bff;
     margin: 0 1px;

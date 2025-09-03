@@ -9,7 +9,8 @@ while [ ${status_bar} -eq 0 ] ; do
   meminfo=$(~/.config/sway/scripts/mem_info.sh)
   volume=$(~/.config/sway/scripts/get_volume.sh)
   lang=$(~/.config/sway/scripts/get_lang.sh)
+  battery=$(~/.config/sway/scripts/battery.sh)
   date=$(~/.config/sway/scripts/current_date.sh)
-  echo "${updates} ${kernel} ${cpuinfo} ${meminfo} ${volume} ${lang} ${date}"
+  echo "${updates} ${kernel} ${cpuinfo} ${meminfo} ${volume} ${lang} ${battery} ${date}"
   sleep 2
 done
