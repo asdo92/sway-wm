@@ -19,7 +19,7 @@ sway-wm - My tiling Sway configuration for Debian
       adwaita-qt6 adwaita-qt qt5ct qt6ct wofi keepassxc wmctrl procps clipman pcmanfm jq dex git \
       geany xarchiver iwd fonts-noto fonts-noto-core fonts-noto-extra fonts-noto-mono waybar \
       xdg-desktop-portal-gtk xdg-desktop-portal xdg-desktop-portal-wlr fonts-liberation psmisc \
-      sway-notification-center
+      sway-notification-center xwayland
       ````
 
       ```shell
