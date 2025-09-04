@@ -304,6 +304,15 @@ exec_always {
   gsettings set $gnome-schema font-name 'Sans 10'
 }
 
+input type:touchpad {
+  tap enabled
+  natural_scroll enabled
+  scroll_method two_finger
+  #click_method clickfinger
+}
+
+bindsym XF86MonBrightnessUp exec brightnessctl set +10%
+bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
 
 # Start swaybar to display a workspace bar
 bar {
