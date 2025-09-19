@@ -23,13 +23,13 @@ sway-wm - My tiling Sway configuration for Debian
       ````
 
       ```shell
-      curl -L "https://gs.q3aql.dev/sway-wm/scripts/update-firefox.sh" | sudo bash
-      curl -L "https://gs.q3aql.dev/sway-wm/scripts/update-telegram.sh" | sudo bash
-      curl -L "https://gs.q3aql.dev/sway-wm/scripts/update-electronmail.sh" | sudo bash
-      curl -L "https://gs.q3aql.dev/sway-wm/packages/nwg-wrapper-install.sh" | sudo bash
-      curl -L "https://gs.q3aql.dev/sway-wm/packages/vim-conf-onedark.sh" | sudo bash
-      curl -L "https://gs.q3aql.dev/sway-wm/packages/um-nerd-fonts.tar.gz" | sudo tar -zxvf - -C /
-      curl -L "https://gs.q3aql.dev/sway-wm/packages/iwd-connectd.tar.gz" | sudo tar -zxvf - -C /
+      curl -L "https://gs.yougeek.dev/sway-wm/scripts/update-firefox.sh" | sudo bash
+      curl -L "https://gs.yougeek.dev/sway-wm/scripts/update-telegram.sh" | sudo bash
+      curl -L "https://gs.yougeek.dev/sway-wm/scripts/update-electronmail.sh" | sudo bash
+      curl -L "https://gs.yougeek.dev/sway-wm/packages/nwg-wrapper-install.sh" | sudo bash
+      curl -L "https://gs.yougeek.dev/sway-wm/packages/vim-conf-onedark.sh" | sudo bash
+      curl -L "https://gs.yougeek.dev/sway-wm/packages/um-nerd-fonts.tar.gz" | sudo tar -zxvf - -C /
+      curl -L "https://gs.yougeek.dev/sway-wm/packages/iwd-connectd.tar.gz" | sudo tar -zxvf - -C /
       sudo systemctl daemon-reload
       sudo systemctl enable iwd-connectd
       ````
@@ -39,7 +39,7 @@ sway-wm - My tiling Sway configuration for Debian
     * Clone repository and copy files to your home:
 
       ```shell
-      git clone https://git.q3aql.dev/q3aql/sway-wm
+      git clone https://github.com/asdo92/sway-wm
       cd sway-wm
       cp -rf .config ~/
       cp -rf wallpapers ~/
