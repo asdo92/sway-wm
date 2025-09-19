@@ -2,7 +2,7 @@
 
 #####################################################
 # Script to build and install nwg-wrapper on Debian #
-# Author: q3aql (q3aql@duck.com)                    #
+# Author: asdo92 (asdo92@duck.com)                    #
 # Last update: 01-07-2025                           #
 # ###################################################
 
