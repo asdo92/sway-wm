@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Script to show cpu
-# Created by q3aql (q3aql@protonmail.ch)
+# Created by asdo92 (asdo92@duck.com)
 # Licensed by GPL v.2
 # Date: 10-01-2020
 # --------------------------------------

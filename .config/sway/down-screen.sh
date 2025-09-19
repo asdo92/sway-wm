@@ -3,8 +3,8 @@
 ######################################################
 # down-screen - Script for sleep and resume monitors #
 # Date: 12-12-2021                                   #
-# Author: q3aql                                      #
-# Contact: q3aql@duck.com                            #
+# Author: asdo92                                      #
+# Contact: asdo92@duck.com                            #
 ######################################################
 
 # Load script for sleep and resume monitors
