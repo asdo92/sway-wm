@@ -69,12 +69,14 @@ else
     name_screenshot="$FILEDIR/Screenshot_$(date +%F_%H.%M.%S).png"
 		grim $OPTION "$name_screenshot"
     if [ -f /usr/bin/ristretto ] ; then
+      export GTK_THEME=Arc-Dark
       ristretto "$name_screenshot"
     fi
 	else
     name_screenshot="$FILEDIR/Screenshot_$(date +%F_%H.%M.%S).png"
 		grim $OPTION -g "$GEO" "$name_screenshot"
     if [ -f /usr/bin/ristretto ] ; then
+      export GTK_THEME=Arc-Dark
       ristretto "$name_screenshot"
     fi
 	fi
