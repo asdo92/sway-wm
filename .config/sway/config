@@ -41,6 +41,9 @@ exec --no-startup-id WAYLAND_DISPLAY=wayland-1 wl-paste --watch clipman store
 # Load Conky
 exec --no-startup-id sleep 9 && ~/.config/sway/nwg-wrapper-conky.sh
 
+# Fix Steam Flatpak
+exec dbus-update-activation-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway DISPLAY
+
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
