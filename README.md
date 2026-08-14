@@ -46,6 +46,20 @@ sway-wm - My tiling Sway configuration for Debian
       echo "export QT_QPA_PLATFORMTHEME=qt5ct" >> ~/.bashrc
       ````
 
+  * **`Install zsh configuration (oh-my-zsh):`**
+  
+    * Clone repository and set theme/plugins:
+
+      ```shell
+      sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+      omz theme set refined
+      omz plugin enable zsh-interactive-cd zsh-navigation-tools colored-man-pages colorize command-not-found
+      cd ~/.oh-my-zsh/custom/plugins
+      git clone https://github.com/zsh-users/zsh-syntax-highlighting.git 
+      omz plugin enable zsh-syntax-highlighting
+      echo "export QT_QPA_PLATFORMTHEME=qt5ct" >> ~/.zshrc
+      ````
+
 ### Configuration:
 
   * **`Network (Optional):`**
