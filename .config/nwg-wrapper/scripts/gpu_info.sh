@@ -1,9 +1,9 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 
 check_sensor=$(sensors | grep "edge:" 2> /dev/null)
-if [ -z "${check_sensor}" ] ; then
+if [[ -z "${check_sensor}" ]] ; then
   check_sensor=$(sensors | grep "junction:" 2> /dev/null)
-  if [ -z "${check_sensor}" ] ; then
+  if [[ -z "${check_sensor}" ]] ; then
     echo "N/A°C" 
   else
     TEMP=$(sensors | grep 'Package id 0:\|junction' | grep ':[ ]*+[0-9]*.[0-9]*°C' -o | grep '+[0-9]*.[0-9]*°C' -o)

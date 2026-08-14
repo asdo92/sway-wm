@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 # Script to show cpu
 # Created by dmesg00 (dmesg00@duck.com)
@@ -11,59 +11,59 @@ VERSION="1.0"
 # Variables
 cpuPercentage=$(top -b -n1 | grep \%Cpu | awk '{print 100-$8}')
 showCpuPercentage=$(echo ${cpuPercentage})
-showCpuPercentageInteger=$(echo ${showCpuPercentage} | cut -d "." -f 1)
+showCpuPercentageInteger=$(echo ${showCpuPercentage} | sed 's/,/./g' |cut -d "." -f 1)
 
 # Show percentage bar
-if [ ${showCpuPercentageInteger} -ge 0 ] ; then
+if (( ${showCpuPercentageInteger} >= 0 )) ; then
 	showCpuPercentageBar="="
 fi
-if [ ${showCpuPercentageInteger} -ge 3 ] ; then
+if (( ${showCpuPercentageInteger} >= 3 )) ; then
 	showCpuPercentageBar="=="
 fi
-if [ ${showCpuPercentageInteger} -ge 12 ] ; then
+if (( ${showCpuPercentageInteger} >= 12 )) ; then
 	showCpuPercentageBar="==="
 fi
-if [ ${showCpuPercentageInteger} -ge 18 ] ; then
+if (( ${showCpuPercentageInteger} >= 18 )) ; then
 	showCpuPercentageBar="===="
 fi
-if [ ${showCpuPercentageInteger} -ge 25 ] ; then
+if (( ${showCpuPercentageInteger} >= 25 )) ; then
 	showCpuPercentageBar="====="
 fi
-if [ ${showCpuPercentageInteger} -ge 35 ] ; then
+if (( ${showCpuPercentageInteger} >= 35 )) ; then
 	showCpuPercentageBar="======"
 fi
-if [ ${showCpuPercentageInteger} -ge 40 ] ; then
+if (( ${showCpuPercentageInteger} >= 40 )) ; then
 	showCpuPercentageBar="======="
 fi
-if [ ${showCpuPercentageInteger} -ge 45 ] ; then
+if (( ${showCpuPercentageInteger} >= 45 )) ; then
 	showCpuPercentageBar="========"
 fi
-if [ ${showCpuPercentageInteger} -ge 50 ] ; then
+if (( ${showCpuPercentageInteger} >= 50 )) ; then
 	showCpuPercentageBar="=========="
 fi
-if [ ${showCpuPercentageInteger} -ge 62 ] ; then
+if (( ${showCpuPercentageInteger} >= 62 )) ; then
 	showCpuPercentageBar="============="
 fi
-if [ ${showCpuPercentageInteger} -ge 75 ] ; then
+if (( ${showCpuPercentageInteger} >= 75 )) ; then
 	showCpuPercentageBar="==============="
 fi
-if [ ${showCpuPercentageInteger} -ge 85 ] ; then
+if (( ${showCpuPercentageInteger} >= 85 )) ; then
 	showCpuPercentageBar="================="
 fi
-if [ ${showCpuPercentageInteger} -ge 90 ] ; then
+if (( ${showCpuPercentageInteger} >= 90 )) ; then
 	showCpuPercentageBar="=================="
 fi
-if [ ${showCpuPercentageInteger} -ge 95 ] ; then
+if (( ${showCpuPercentageInteger} >= 95 )) ; then
 	showCpuPercentageBar="==================="
 fi
-if [ ${showCpuPercentageInteger} -ge 100 ] ; then
+if (( ${showCpuPercentageInteger} >= 100 )) ; then
 	showCpuPercentageBar="===================="
 fi
 
 # Show results
-if [ "$1" == "-p" ]; then
+if [[ "$1" == "-p" ]] ; then
 	echo ${showCpuPercentage}%
-elif [ "$1" == "-b" ]; then
+elif [[ "$1" == "-b" ]] ; then
 	echo ${showCpuPercentageBar}
 else
 	echo ""

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 get_volume=$(amixer | grep "%" | head -1 | cut -d "%" -f 1 | cut -d "[" -f 2)
 echo "${get_volume}% "

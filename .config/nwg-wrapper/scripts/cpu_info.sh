@@ -1,9 +1,9 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 
 check_sensor=$(sensors | grep "Tdie:" 2> /dev/null)
-if [ -z "${check_sensor}" ] ; then
+if [[ -z "${check_sensor}" ]] ; then
   check_sensor=$(sensors | grep "Tctl:" 2> /dev/null)
-  if [ -z "${check_sensor}" ] ; then
+  if [[ -z "${check_sensor}" ]] ; then
     CPU_USAGE=$(~/.config/nwg-wrapper/scripts/cpu_load.sh -p)
     echo "$CPU_USAGE" | awk '{ printf("%6s \n"), $1, $2 }'
   else

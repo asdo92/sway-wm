@@ -1,4 +1,6 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
+
+setopt SH_WORD_SPLIT NO_NOMATCH
 
 time=$(LC_ALL=C TZ='Europe/Warsaw' date +'%A, %d. %B')
 wttr=$(curl https://wttr.in/?format=1)

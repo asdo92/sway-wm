@@ -1,4 +1,6 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
+
+setopt SH_WORD_SPLIT NO_NOMATCH
 
 echo '<b><span foreground="#3b8af6" face="UbuntuMono Nerd Font" size="12650">  SYSTEM INFO</span></b>'
 echo '<b><span foreground="#3b8af6" face="UbuntuMono Nerd Font" size="12650">==============</span></b>'

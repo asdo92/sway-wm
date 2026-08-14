@@ -1,4 +1,6 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
+
+setopt SH_WORD_SPLIT NO_NOMATCH
 
 # Some countries below have more than one time zone,
 # and it makes sense to use cities instead of countries.
