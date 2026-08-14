@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env zsh
+
+setopt SH_WORD_SPLIT NO_NOMATCH
 
 export GTK_THEME=Adwaita-Dark
 FILEDIR=~/Recordings
@@ -26,12 +28,12 @@ mode=$(echo $values | cut -d '|' -f 1)
 wait=$(echo $values | cut -d '|' -f 2)
 audio_source=$(echo $values | cut -d '|' -f 3)
 
-if [ "$result" -eq 1 ]; then      # select cancel
+if (( "$result" == 1 )) ; then      # select cancel
     echo "canceling"
     exit
 fi
 
-if [ -z "$mode" ]; then       # select nothing
+if [[ -z "$mode" ]] ; then       # select nothing
     echo "mode is null"
     zenity \
         --title=wayland-recorder \
@@ -41,15 +43,15 @@ if [ -z "$mode" ]; then       # select nothing
     exit
 fi
 
-if [ ! -z "$wait" ]; then
+if [[ ! -z "$wait" ]] ; then
     sleep $wait
 fi
 
-if [ "$mode" == "All screen" ]; then  # select All screen
+if [[ "$mode" == "All screen" ]] ; then  # select All screen
     GEO=""
-elif [ "$mode" == "Specific window" ]; then  # select specify window
+elif [[ "$mode" == "Specific window" ]] ; then  # select specify window
     GEO="$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp)"
-elif [ "$mode" == "Specific area" ]; then  # select specify area
+elif [[ "$mode" == "Specific area" ]] ; then  # select specify area
     GEO="$(slurp)"
 else                         # error
     echo $mode
@@ -59,14 +61,14 @@ fi
 # Recording
 name_record="$FILEDIR/Recording_$(date +%F_%H.%M.%S).mp4"
 
-if [ -z "$GEO" ]; then
-    if [ "$audio_source" != "none" ]; then
+if [[ -z "$GEO" ]] ; then
+    if [[ "$audio_source" != "none" ]] ; then
         foot -T wf-recorder wf-recorder -f "$name_record" -a"$audio_source"
     else
         foot -T wf-recorder wf-recorder -f "$name_record"
     fi
 else
-    if [ "$audio_source" != "none" ]; then
+    if [[ "$audio_source" != "none" ]] ; then
         foot -T wf-recorder wf-recorder -g "$GEO" -f "$name_record" -a"$audio_source"
     else
         foot -T wf-recorder wf-recorder -g "$GEO" -f "$name_record"
@@ -74,6 +76,6 @@ else
 fi
 
 # Play recording
-if [ -f /usr/bin/mpv ]; then
+if [[ -f /usr/bin/mpv ]] ; then
     mpv "$name_record"
 fi

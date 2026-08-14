@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 repeat="30m"
 xhost_while=0
 
-while [ ${xhost_while} -eq 0 ] ; do
+while (( ${xhost_while} == 0 )) ; do
   xhost +
   xhost +SI:localuser:root
   sleep ${repeat}

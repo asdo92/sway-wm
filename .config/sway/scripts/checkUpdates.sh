@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 # Variables
 checkupdates_file=/tmp/checkupdates
@@ -8,7 +8,7 @@ listupdates_run="60" # 1 minute
 listupdates_show=/tmp/listupdates_show
 
 # checkupdates file init
-if [ ! -f ${checkupdates_file} ] ; then
+if [[ ! -f ${checkupdates_file} ]] ; then
   touch ${checkupdates_file}
   echo "0" > ${checkupdates_file}
 else
@@ -18,7 +18,7 @@ else
 fi
 
 # listupdates file init
-if [ ! -f ${listupdates_file} ] ; then
+if [[ ! -f ${listupdates_file} ]] ; then
   touch ${listupdates_file}
   echo "0" > ${listupdates_file}
 else
@@ -26,7 +26,7 @@ else
   listupdates_incr=$((${listupdates_value} + 1))
   echo "${listupdates_incr}" > ${listupdates_file}
 fi
-if [ ! -f ${listupdates_show} ] ; then
+if [[ ! -f ${listupdates_show} ]] ; then
   touch ${listupdates_show}
   echo "0" > ${listupdates_show}
 fi
@@ -34,24 +34,24 @@ fi
 # Check updates on Arch Linux
 checkupdate=$(cat ${checkupdates_file})
 listupdate=$(cat ${listupdates_file})
-if [ -f /usr/bin/pacman ] ; then
-  if [ ${checkupdate} -ge ${checkupdates_run} ] ; then
+if [[ -f /usr/bin/pacman ]] ; then
+  if (( ${checkupdate} >= ${checkupdates_run} )) ; then
     sudo -A pacman -Syy > /dev/null 2>&1
     echo "0" > ${checkupdates_file}
   fi
-  if [ ${listupdate} -ge ${listupdates_run} ] ; then
+  if (( ${listupdate} >= ${listupdates_run} )) ; then
     num_packages=$(pacman -Qu | wc -l)
     echo "0" > ${listupdates_file}
     echo "${num_packages}" > ${listupdates_show}
   fi
   echo " $(cat ${listupdates_show}) "
 # Check updates on Ubuntu/Debian/Devuan
-elif [ -f /usr/bin/apt ] ; then
-  if [ ${checkupdate} -ge ${checkupdates_run} ] ; then
+elif [[ -f /usr/bin/apt ]] ; then
+  if (( ${checkupdate} >= ${checkupdates_run} )) ; then
     sudo -A apt update > /dev/null 2>&1
     echo "0" > ${checkupdates_file}
   fi
-  if [ ${listupdate} -ge ${listupdates_run} ] ; then
+  if (( ${listupdate} >= ${listupdates_run} )) ; then
     num_packages=$(apt list --upgradable 2>/dev/null | grep -c ^)
     num_packages=$(expr ${num_packages} - 1)
     echo "0" > ${listupdates_file}

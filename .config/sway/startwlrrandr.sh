@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 # Ignore sleep when run script from startwlrscreensaver.sh
-if [ "${1}" == "screensaver" ] ; then
+if [[ "${1}" == "screensaver" ]] ; then
   echo "Load monitor configuration quickly"
 else
   sleep 2

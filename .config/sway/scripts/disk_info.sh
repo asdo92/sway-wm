@@ -1,3 +1,3 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 df -h / | awk '/\//{ printf(" %4s / %s \n", $4, $2) }'

@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 status_bar=0
 
-while [ ${status_bar} -eq 0 ] ; do
+while (( ${status_bar} == 0 )) ; do
   updates=$(~/.config/sway/scripts/checkUpdates.sh)
   kernel=$(~/.config/sway/scripts/kernel_version.sh)
   cpuinfo=$(~/.config/sway/scripts/cpu_info.sh)

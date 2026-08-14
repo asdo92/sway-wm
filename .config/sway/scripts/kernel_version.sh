@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 # Parameters
 longNumber=2
@@ -15,7 +15,7 @@ kernelVersionTemp=$(uname -r | cut -d "." -f ${count})
     kernelVersion="${kernelVersion}${kernelVersionTempDot}"
     count=$(expr ${count} + 1)
     
-while [ ${count} -le ${longNumber} ] ; do
+while (( ${count} <= ${longNumber} )) ; do
     kernelVersionTemp=$(uname -r | cut -d "." -f ${count})
     kernelVersionTempDot=".${kernelVersionTemp}"
     kernelVersion="${kernelVersion}${kernelVersionTempDot}"

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 # Configuration variable
 python_bin="/usr/bin/python3"
@@ -13,11 +13,11 @@ memActive=$(expr ${memTotal} - ${memActive})
 # Variables to calculate
 memTotalM=$(expr ${memTotal} / 1024 )
 memActiveM=$(expr ${memActive} / 1024)
-if [ -f ${python_bin} ] ; then
+if [[ -f ${python_bin} ]] ; then
   memPercentage=$(echo "n=${memActive}/${memTotal}*100 ; print(n)" | ${python_bin})
   memTotalG=$(echo "n=${memTotalM}/1024 ; print(n)" | ${python_bin} | tr -s " " | cut -c1-4)
   memActiveG=$(echo "n=${memActiveM}/1024 ; print(n)" | ${python_bin} | tr -s " " | cut -c1-4)
-elif [ -f /usr/bin/calc ] ; then
+elif [[ -f /usr/bin/calc ]] ; then
   memPercentage=$(calc ${memActive} / ${memTotal} \* 100)
   memTotalG=$(calc ${memTotalM} / 1024 | tr -s " " | cut -c1-5)
   memActiveG=$(calc ${memActiveM} / 1024 | tr -s " " | cut -c1-5)
@@ -29,10 +29,10 @@ fi
 
 # Variables to show
 showMemPercentage=$(echo ${memPercentage} | cut -d "~" -f 2 | cut -d "." -f 1)
-if [ "${size}" == "G" ] ; then
+if [[ "${size}" == "G" ]] ; then
   showMemTotal="${memTotalG}Gi"
   showMemActive="${memActiveG}Gi"
-elif [ "${size}" == "M" ] ; then
+elif [[ "${size}" == "M" ]] ; then
   showMemTotal="${memTotalM}Mi"
   showMemActive="${memActiveM}Mi"
 else

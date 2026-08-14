@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 # Load xterm config on Wayland
 xrdb -load ~/.config/xterm/xtermrc
