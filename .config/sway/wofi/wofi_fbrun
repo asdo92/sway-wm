@@ -1,29 +1,31 @@
-#!/bin/bash
+#!/usr/bin/env zsh
+
+setopt SH_WORD_SPLIT NO_NOMATCH
 
 ##########################################################################
 # wofi_fbrun - wofi-dmenu script that simulates 'rofi -show filebrowser' #
 #                                                                        #
-# Author: asdo92 <asdo92@duck.com>                                         #
-# Last update: 04-01-2023                                                #
+# Author: dmesg00 <dmesg00@duck.com>                                     #
+# Last update: 15-08-2026                                                #
 ##########################################################################
 
 # Configuration variables
 load_theme_path="${HOME}/.wofi"
 
-function generate_spaces() {
+generate_spaces() {
   num_spaces=${1}
   count_spaces=1
-  while [ ${count_spaces} -le ${num_spaces} ] ; do
+  while (( ${count_spaces} <= ${num_spaces} )) ; do
     echo -n " "
     count_spaces=$(expr ${count_spaces} + 1)
   done
 }
 
-function show_icon_tree() {
+show_icon_tree() {
   ls -1 | while read current ; do
-    if [ -f "${current}" ] ; then
+    if [[ -f "${current}" ]] ; then
       echo "   ${current}"
-    elif [ -d "${current}" ] ; then
+    elif [[ -d "${current}" ]] ; then
       echo "   ${current}"
     else
       echo "  ${current}"
@@ -36,18 +38,18 @@ function remove_icon() {
   entry="${@}"
   remove_icon_space=0
   read_entry=$(echo "${entry}" | grep "  ")
-  if ! [ -z "${read_entry}" ] ; then
+  if ! [[ -z "${read_entry}" ]] ; then
     remove_icon_space=1
   fi
   read_entry=$(echo "${entry}" | grep "  ")
-  if ! [ -z "${read_entry}" ] ; then
+  if ! [[ -z "${read_entry}" ]] ; then
     remove_icon_space=1
   fi
   read_entry=$(echo "${entry}" | grep "  ")
-  if ! [ -z "${read_entry}" ] ; then
+  if ! [[ -z "${read_entry}" ]] ; then
     remove_icon_space=1
   fi
-  if [ ${remove_icon_space} -eq 1 ] ; then
+  if (( ${remove_icon_space} == 1 )) ; then
     show_output=$(echo "${entry}" | cut -c4-999 | tr -s " " | cut -c2-999)
     echo "${show_output}"
   else
@@ -56,15 +58,15 @@ function remove_icon() {
 }
 
 file=1
-while [ "${file}" ]; do
+while [[ "${file}" ]] ; do
   file_icon=$(show_icon_tree | wofi -s ~/.config/wofi/wofi.css --dmenu -i -p "󰈞  filebrowser: $(basename $(pwd))")
   file=$(remove_icon "${file_icon}")
   echo "# ${file} #"
-  if [ -e "${file}" ]; then
+  if [[ -e "${file}" ]] ; then
     owd=$(pwd)
-    if [ -d "${file}" ]; then
+    if [[ -d "${file}" ]] ; then
       cd "${file}"
-    else [ -f "${file}" ]
+    else [[ -f "${file}" ]]
       if which xdg-open &> /dev/null; then
         exec xdg-open "${owd}/${file}" &
         unset file
