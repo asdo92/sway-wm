@@ -1,8 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env zsh
+
+setopt SH_WORD_SPLIT NO_NOMATCH
 
 mkdir -p /etc/root 2> /dev/null
 rootperm=$?
-if [ $rootperm -eq 0 ] ; then
+if (( $rootperm == 0 )) ; then
   rm -rf /etc/root
 else
   echo "Root permission is required to run this script"
@@ -17,11 +19,11 @@ install_yazi_gen(){
   echo "Installing yazi"
   cd /tmp
   unzip -q yazi.zip
-  if [ -f yazi-x86_64-unknown-linux-musl/ya ] ; then
+  if [[ -f yazi-x86_64-unknown-linux-musl/ya ]] ; then
     cp -rf yazi-x86_64-unknown-linux-musl/ya /usr/bin/
     chmod +x /usr/bin/ya
   fi
-  if [ -f yazi-x86_64-unknown-linux-musl/yazi ] ; then
+  if [[ -f yazi-x86_64-unknown-linux-musl/yazi ]] ; then
     cp -rf yazi-x86_64-unknown-linux-musl/yazi /usr/bin/
     chmod +x /usr/bin/yazi
   fi
@@ -34,11 +36,11 @@ echo "Checking yazi version"
 touch /etc/yazi_version.conf
 version_yazi=$(curl "https://github.com/sxyazi/yazi/releases" 2> /dev/null | grep "releases/tag" | grep -v "nightly" | head -1 | cut -d "=" -f 4 | cut -d "/" -f 6 | cut -d '"' -f 1)
 version_yazi_current=$(cat /etc/yazi_version.conf)
-if [ "${version_yazi}" != "${version_yazi_current}" ] ; then
+if [[ "${version_yazi}" != "${version_yazi_current}" ]] ; then
   echo "New yazi version detected"
   install_yazi_gen "${version_yazi}"
   error_install=$?
-  if [ ${error_install} -eq 0 ] ; then
+  if (( ${error_install} == 0 )) ; then
     echo "${version_yazi}" > /etc/yazi_version.conf
   fi
 else

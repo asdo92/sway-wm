@@ -1,8 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env zsh
+
+setopt SH_WORD_SPLIT NO_NOMATCH
 
 mkdir -p /etc/root 2> /dev/null
 rootperm=$?
-if [ $rootperm -eq 0 ] ; then
+if (( $rootperm == 0 )) ; then
   rm -rf /etc/root
 else
   echo "Root permission is required to run this script"
@@ -13,7 +15,7 @@ echo "Checking rclone version"
 touch /etc/rclone_version.conf
 version_rclone=$(curl "https://rclone.org/downloads/" 2> /dev/null | grep "\"release\"" | cut -d ">" -f 2 | cut -d "<" -f 1 | cut -d " " -f 2)
 version_rclone_current=$(cat /etc/rclone_version.conf)
-if [ "${version_rclone}" != "${version_rclone_current}" ] ; then
+if [[ "${version_rclone}" != "${version_rclone_current}" ]] ; then
   echo "New rclone version detected"
   echo "Downloading rclone"
   rm -rf /tmp/rclone.zip
@@ -26,7 +28,7 @@ if [ "${version_rclone}" != "${version_rclone_current}" ] ; then
   mkdir -p /usr/share/man/man1/
   cp -rf rclone-${version_rclone}-linux-amd64/rclone.1 /usr/share/man/man1/
   error_install=$?
-  if [ ${error_install} -eq 0 ] ; then
+  if (( ${error_install} == 0 )) ; then
     echo "${version_rclone}" > /etc/rclone_version.conf
     rm -rf /tmp/rclone.zip
     rm -rf /tmp/rclone-${version_rclone}-linux-amd64

@@ -1,8 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env zsh
+
+setopt SH_WORD_SPLIT NO_NOMATCH
 
 mkdir -p /etc/root 2> /dev/null
 rootperm=$?
-if [ $rootperm -eq 0 ] ; then
+if (( $rootperm == 0 )) ; then
   rm -rf /etc/root
 else
   echo "Root permission is required to run this script"
@@ -13,7 +15,7 @@ echo "Checking yt-dlp version"
 touch /etc/ytdlp_version.conf
 version_ytdlp=$(curl "https://github.com/yt-dlp/yt-dlp/releases" 2> /dev/null | grep "releases/tag" | head -1 | cut -d "=" -f 4 | cut -d "/" -f 6 | cut -d '"' -f 1 | cut -d "v" -f 2)
 version_ytdlp_current=$(cat /etc/ytdlp_version.conf)
-if [ "${version_ytdlp}" != "${version_ytdlp_current}" ] ; then
+if [[ "${version_ytdlp}" != "${version_ytdlp_current}" ]] ; then
   echo "New yt-dlp version detected"
   echo "Downloading yt-dlp"
   rm -rf /tmp/yt-dlp
@@ -21,7 +23,7 @@ if [ "${version_ytdlp}" != "${version_ytdlp_current}" ] ; then
   echo "Installing yt-dlp"
   cp -rf /tmp/yt-dlp /usr/bin/
   error_install=$?
-  if [ ${error_install} -eq 0 ] ; then
+  if (( ${error_install} == 0 )) ; then
     echo "${version_ytdlp}" > /etc/ytdlp_version.conf
     chmod +x /usr/bin/yt-dlp
     echo "Installation yt-dlp done"

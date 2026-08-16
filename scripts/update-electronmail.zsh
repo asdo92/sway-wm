@@ -1,15 +1,17 @@
-#!/bin/bash
+#!/usr/bin/env zsh
+
+setopt SH_WORD_SPLIT NO_NOMATCH
 
 mkdir -p /etc/root 2> /dev/null
 rootperm=$?
-if [ $rootperm -eq 0 ] ; then
+if (( $rootperm == 0 )) ; then
   rm -rf /etc/root
 else
   echo "Root permission is required to run this script"
   exit
 fi
 
-if [ ! -f /usr/bin/apt ] ; then
+if [[ ! -f /usr/bin/apt ]] ; then
   echo "This script is only for Debian-based systems"
   exit
 fi
@@ -18,7 +20,7 @@ echo "Checking electronmail version"
 touch /etc/electronmail_version.conf
 version_electronmail=$(curl "https://github.com/vladimiry/ElectronMail/releases" 2> /dev/null | grep "releases/tag" | head -1 | cut -d "=" -f 4 | cut -d "/" -f 6 | cut -d '"' -f 1 | cut -d "v" -f 2)
 version_electronmail_current=$(cat /etc/electronmail_version.conf)
-if [ "${version_electronmail}" != "${version_electronmail_current}" ] ; then
+if [[ "${version_electronmail}" != "${version_electronmail_current}" ]] ; then
   echo "New electronmail version detected"
   echo "Downloading electronmail"
   rm -rf /tmp/electronmail.deb
@@ -26,7 +28,7 @@ if [ "${version_electronmail}" != "${version_electronmail_current}" ] ; then
   echo "Installing electronmail"
   apt install /tmp/electronmail.deb
   error_install=$?
-  if [ ${error_install} -eq 0 ] ; then
+  if (( ${error_install} == 0 )) ; then
     echo "${version_electronmail}" > /etc/electronmail_version.conf
   fi
 else

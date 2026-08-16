@@ -1,8 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env zsh
+
+setopt SH_WORD_SPLIT NO_NOMATCH
 
 mkdir -p /etc/root 2> /dev/null
 rootperm=$?
-if [ $rootperm -eq 0 ] ; then
+if (( $rootperm == 0 )) ; then
   rm -rf /etc/root
 else
   echo "Root permission is required to run this script"
@@ -16,7 +18,7 @@ install_firefox_gen() {
   #wget -q --show-progress -c "${download_url_firefox}" -O /tmp/firefox.tar.xz
   wget -q --show-progress -c "https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-US" -O /tmp/firefox.tar.xz
   echo "Installing firefox"
-  if [ -d /usr/lib ] ; then
+  if [[ -d /usr/lib ]] ; then
     tar Jxf /tmp/firefox.tar.xz -C /usr/lib/
     unlink /usr/bin/firefox 2> /dev/null
     install_firefox_desktop
@@ -28,7 +30,7 @@ install_firefox_gen() {
 }
 
 install_firefox_desktop() {
-  if [ -d /usr/share/applications ] ; then
+  if [[ -d /usr/share/applications ]] ; then
     echo '[Desktop Entry]' > /usr/share/applications/firefox.desktop
     echo 'Name=Firefox' >> /usr/share/applications/firefox.desktop
     echo 'Comment=Browse the World Wide Web' >> /usr/share/applications/firefox.desktop
@@ -38,7 +40,7 @@ install_firefox_desktop() {
     echo 'Terminal=false' >> /usr/share/applications/firefox.desktop
     echo 'X-MultipleArgs=false' >> /usr/share/applications/firefox.desktop
     echo 'Type=Application' >> /usr/share/applications/firefox.desktop
-    if [ -f /usr/lib/firefox/browser/chrome/icons/default/default48.png ] ; then
+    if [[ -f /usr/lib/firefox/browser/chrome/icons/default/default48.png ]] ; then
       echo 'Icon=/usr/lib/firefox/browser/chrome/icons/default/default48.png' >> /usr/share/applications/firefox.desktop
     else
       echo 'Icon=firefox' >> /usr/share/applications/firefox.desktop
@@ -55,11 +57,11 @@ touch /etc/firefox_version.conf
 url_download=$(curl -I -s "https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-US" | grep -i "location:" | cut -d " " -f 2)
 version_firefox=$(basename ${url_download})
 version_firefox_current=$(cat /etc/firefox_version.conf)
-if [ "${version_firefox}" != "${version_firefox_current}" ] ; then
+if [[ "${version_firefox}" != "${version_firefox_current}" ]] ; then
   echo "New firefox version detected"
   install_firefox_gen "${url_download}"
   error_install=$?
-  if [ ${error_install} -eq 0 ] ; then
+  if (( ${error_install} == 0 )) ; then
     echo "${version_firefox}" > /etc/firefox_version.conf
   fi
 else

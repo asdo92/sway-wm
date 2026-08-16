@@ -1,8 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env zsh
+
+setopt SH_WORD_SPLIT NO_NOMATCH
 
 mkdir -p /etc/root 2> /dev/null
 rootperm=$?
-if [ $rootperm -eq 0 ] ; then
+if (( $rootperm == 0 )) ; then
   rm -rf /etc/root
 else
   echo "Root permission is required to run this script"
@@ -16,7 +18,7 @@ install_telegram_gen() {
   #wget -q --show-progress -c "${download_url_telegram}" -O /tmp/telegram.tar.xz
   wget -q --show-progress -c "https://telegram.org/dl/desktop/linux" -O /tmp/telegram.tar.xz
   echo "Installing telegram"
-  if [ -d /opt ] ; then
+  if [[ -d /opt ]] ; then
     tar Jxf /tmp/telegram.tar.xz -C /opt/
     unlink /usr/bin/telegram 2> /dev/null
     install_telegram_desktop
@@ -28,7 +30,7 @@ install_telegram_gen() {
 }
 
 install_telegram_desktop() {
-  if [ -d /usr/share/applications ] ; then
+  if [[ -d /usr/share/applications ]] ; then
     echo '[Desktop Entry]' > /usr/share/applications/telegram.desktop
     echo 'Name=Telegram' >> /usr/share/applications/telegram.desktop
     echo 'Comment=Chat with Telegram' >> /usr/share/applications/telegram.desktop
@@ -50,11 +52,11 @@ touch /etc/telegram_version.conf
 url_download=$(curl -I -s "https://telegram.org/dl/desktop/linux" | grep -i "location:" | cut -d " " -f 2)
 version_telegram=$(basename ${url_download})
 version_telegram_current=$(cat /etc/telegram_version.conf)
-if [ "${version_telegram}" != "${version_telegram_current}" ] ; then
+if [[ "${version_telegram}" != "${version_telegram_current}" ]] ; then
   echo "New telegram version detected"
   install_telegram_gen "${url_download}"
   error_install=$?
-  if [ ${error_install} -eq 0 ] ; then
+  if (( ${error_install} == 0 )) ; then
     echo "${version_telegram}" > /etc/telegram_version.conf
   fi
 else

@@ -1,31 +1,31 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
-function update_packages() {
+update_packages() {
   sudo flatpak update
   sudo apt update
   sudo apt upgrade -y
 }
 
-function update_kernel_stable() {
+update_kernel_stable() {
   sudo apt install linux-image-amd64 -y
   sudo apt autoremove
 }
 
-function update_scripts() {
-  sudo update-yazi.sh
-  sudo update-vim.sh
-  sudo update-rclone.sh
-  sudo update-ffmpeg.sh
-  sudo update-yt-dlp.sh
-  sudo update-open-tv.sh
-  sudo update-electronmail.sh
-  sudo update-firefox.sh
-  sudo update-telegram.sh
+update_scripts() {
+  sudo update-yazi.zsh
+  sudo update-vim.zsh
+  sudo update-rclone.zsh
+  sudo update-ffmpeg.zsh
+  sudo update-yt-dlp.zsh
+  sudo update-open-tv.zsh
+  sudo update-electronmail.zsh
+  sudo update-firefox.zsh
+  sudo update-telegram.zsh
   #sudo update-tabby.sh
   #sudo update-plex.sh
 }
 
-function fstrim_run() {
+fstrim_run() {
   echo "First Trimming"
   sudo /sbin/fstrim -a -v
   echo "Second Trimming"
