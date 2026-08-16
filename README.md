@@ -23,11 +23,12 @@ sway-wm - My tiling Sway configuration for Debian
       ````
 
       ```shell
-      curl -L "https://gs.yougeek.dev/sway-wm/scripts/update-firefox.sh" | sudo bash
-      curl -L "https://gs.yougeek.dev/sway-wm/scripts/update-telegram.sh" | sudo bash
-      curl -L "https://gs.yougeek.dev/sway-wm/scripts/update-electronmail.sh" | sudo bash
-      curl -L "https://gs.yougeek.dev/sway-wm/packages/nwg-wrapper-install.sh" | sudo bash
-      curl -L "https://gs.yougeek.dev/sway-wm/packages/vim-conf-onedark.sh" | sudo bash
+      curl -L "https://gs.yougeek.dev/sway-wm/scripts/update-firefox.zsh" | sudo zsh
+      curl -L "https://gs.yougeek.dev/sway-wm/scripts/update-telegram.zsh" | sudo zsh
+      curl -L "https://gs.yougeek.dev/sway-wm/scripts/update-electronmail.zsh" | sudo zsh
+      curl -L "https://gs.yougeek.dev/sway-wm/scripts/update-neovim.zsh" | sudo zsh
+      curl -L "https://gs.yougeek.dev/sway-wm/packages/nwg-wrapper-install.zsh" | sudo zsh
+      curl -L "https://gs.yougeek.dev/sway-wm/packages/neovim-conf-onedark.zsh" | sudo zsh
       curl -L "https://gs.yougeek.dev/sway-wm/packages/um-nerd-fonts.tar.gz" | sudo tar -zxvf - -C /
       curl -L "https://gs.yougeek.dev/sway-wm/packages/iwd-connectd.tar.gz" | sudo tar -zxvf - -C /
       sudo systemctl daemon-reload
