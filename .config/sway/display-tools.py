@@ -22,7 +22,7 @@ class MainWindow:
     self.boton1 = tk.Button(master, text="Run wdisplays", command=self.exec_command1, bg='#205d2c', fg="white")
     self.boton1.pack(side=tk.TOP, pady=10)
 
-    self.boton2 = tk.Button(master, text="Run ~/.config/sway/startwlrrandr.sh", command=self.exec_command2, bg='#205d2c', fg="white")
+    self.boton2 = tk.Button(master, text="Run ~/.config/sway/startwlrrandr.zsh", command=self.exec_command2, bg='#205d2c', fg="white")
     self.boton2.pack(side=tk.TOP, pady=10)
 
     self.boton3 = tk.Button(master, text="Run ~/.config/sway/wayland-screenshot", command=self.exec_command3, bg='#205d2c', fg="white")
@@ -51,8 +51,8 @@ class MainWindow:
     os.system(command)
 
   def exec_command2(self):
-    print('# Run ~/.config/sway/startwlrrandr.sh')
-    command = "~/.config/sway/startwlrrandr.sh"
+    print('# Run ~/.config/sway/startwlrrandr.zsh')
+    command = "~/.config/sway/startwlrrandr.zsh"
     os.system(command)
 
   def exec_command3(self):
@@ -67,7 +67,7 @@ class MainWindow:
 
   def exec_command5(self):
     print('# Start/Restart nwg-wrapper (conky sway)')
-    command = "~/.config/sway/nwg-wrapper-conky.sh"
+    command = "~/.config/sway/nwg-wrapper-conky.zsh"
     os.system(command)
 
   def exec_command6(self):

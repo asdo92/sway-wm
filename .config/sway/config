@@ -10,13 +10,13 @@ font pango:UbuntuMono Nerd Font 11.5
 #font pango:Ubuntu 10.5
 
 # Configure screens and resolution
-exec --no-startup-id ~/.config/sway/startwlrrandr.sh &
+exec --no-startup-id ~/.config/sway/startwlrrandr.zsh &
 exec --no-startup-id systemctl --user start xdg-desktop-portal.service
 exec --no-startup-id systemctl --user start xdg-desktop-portal-gtk.service
 exec --no-startup-id systemctl --user start xdg-desktop-portal-wlr.service
 
 # Run apps as root
-exec --no-startup-id ~/.config/sway/xhost-x11-root.sh &
+exec --no-startup-id ~/.config/sway/xhost-x11-root.zsh &
 
 # Restart pipewire
 exec --no-startup-id systemctl --user restart pipewire
@@ -33,13 +33,13 @@ exec --no-startup-id "electron-mail &"
 exec --no-startup-id "swaybg -i ~/wallpapers/40.jpg -m fill"
 
 # Start Screensaver (Also Super+Ctrl+Shift+l to poweroff/start screen)
-exec --no-startup-id ~/.config/sway/startwlrscreensaver.sh
+exec --no-startup-id ~/.config/sway/startwlrscreensaver.zsh
 
 # Clipboard
 exec --no-startup-id WAYLAND_DISPLAY=wayland-1 wl-paste --watch clipman store
 
 # Load Conky
-exec --no-startup-id sleep 9 && ~/.config/sway/nwg-wrapper-conky.sh
+exec --no-startup-id sleep 9 && ~/.config/sway/nwg-wrapper-conky.zsh
 
 # Fix Steam Flatpak
 exec dbus-update-activation-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway DISPLAY
@@ -104,7 +104,7 @@ bindsym $mod+Shift+l move up
 bindsym $mod+Shift+ntilde move right
 
 # lock screen
-set $swaylockwall ~/.config/sway/down-screen.sh
+set $swaylockwall ~/.config/sway/down-screen.zsh
 bindsym $mod+Ctrl+Shift+l exec --no-startup-id $swaylockwall
 
 # close session
@@ -266,7 +266,7 @@ for_window [app_id="org.twosheds.iwgtk"] floating enable
 for_window [app_id="iwgtk"] floating enable
 
 # restart sway inplace (preserves your layout/session, can be used to upgrade sway)
-bindsym $mod+Shift+r exec ~/.config/sway/reload.sh
+bindsym $mod+Shift+r exec ~/.config/sway/reload.zsh
 # exit sway (logs you out of your session)
 bindsym $mod+Shift+e exec "swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit Sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'"
 
@@ -321,7 +321,7 @@ bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
 # Start swaybar to display a workspace bar
 bar {
   position top
-  status_command ~/.config/sway/scripts/status_bar.sh
+  status_command ~/.config/sway/scripts/status_bar.zsh
   strip_workspace_numbers no
   #swaybar_command waybar
   workspace_buttons yes

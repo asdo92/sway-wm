@@ -39,17 +39,17 @@ class MainWindow:
 
   def exec_command1(self):
     print('# Enabled Caffeine Mode')
-    command = "killall startwlrscreensaver.sh 2> /dev/null"
+    command = "killall startwlrscreensaver.zsh 2> /dev/null"
     os.system(command)
     command = "killall swayidle 2> /dev/null"
     os.system(command)
 
   def exec_command2(self):
-    command = "killall startwlrscreensaver.sh 2> /dev/null"
+    command = "killall startwlrscreensaver.zsh 2> /dev/null"
     os.system(command)
     command = "killall swayidle 2> /dev/null"
     os.system(command)
-    command = "~/.config/sway/startwlrscreensaver.sh &"
+    command = "~/.config/sway/startwlrscreensaver.zsh &"
     os.system(command)
     print('# Disabled Caffeine Mode')
 

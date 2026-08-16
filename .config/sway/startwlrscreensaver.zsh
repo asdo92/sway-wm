@@ -6,13 +6,13 @@ setopt SH_WORD_SPLIT NO_NOMATCH
 ScreensaverTime="1200" # 20 minutes
 
 # Load script for load monitors config quickly from resume
-LoadConfigResume="${HOME}/.config/sway/startwlrrandr.sh"
+LoadConfigResume="${HOME}/.config/sway/startwlrrandr.zsh"
 
 # StateFile variable
 stateFile="${HOME}/.config/sway/screen-state"
 
 # Start/Restart nwg-wrapper
-nwgWrapperRestart="${HOME}/.config/sway/nwg-wrapper-conky.sh"
+nwgWrapperRestart="${HOME}/.config/sway/nwg-wrapper-conky.zsh"
 
 # Function for sleep monitors
 sleepMonitors() {

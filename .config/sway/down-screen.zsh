@@ -8,7 +8,7 @@
 ######################################################
 
 # Load script for sleep and resume monitors
-LoadScriptScreensaver="${HOME}/.config/sway/startwlrscreensaver.sh"
+LoadScriptScreensaver="${HOME}/.config/sway/startwlrscreensaver.zsh"
 
 # Create or read init file
 stateFile="${HOME}/.config/sway/screen-state"
