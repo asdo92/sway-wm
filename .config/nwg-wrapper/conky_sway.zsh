@@ -5,15 +5,15 @@ setopt SH_WORD_SPLIT NO_NOMATCH
 echo '<b><span foreground="#3b8af6" face="UbuntuMono Nerd Font" size="12650">  SYSTEM INFO</span></b>'
 echo '<b><span foreground="#3b8af6" face="UbuntuMono Nerd Font" size="12650">==============</span></b>'
 echo ''
-show_kernel=$(${HOME}/.config/nwg-wrapper/scripts/kernel_version.sh)
-show_time=$(${HOME}/.config/nwg-wrapper/scripts/current_date.sh)
-show_uptime=$(${HOME}/.config/nwg-wrapper/scripts/show_uptime.sh)
-show_volume=$(${HOME}/.config/nwg-wrapper/scripts/get_volume.sh)
-show_disk=$(${HOME}/.config/nwg-wrapper/scripts/disk_info.sh)
-show_memory=$(${HOME}/.config/nwg-wrapper/scripts/mem_info.sh)
-show_cpu=$(${HOME}/.config/nwg-wrapper/scripts/cpu_info.sh)
-show_gpu=$(${HOME}/.config/nwg-wrapper/scripts/gpu_info.sh)
-show_updates=$(${HOME}/.config/nwg-wrapper/scripts/checkUpdates.sh)
+show_kernel=$(${HOME}/.config/nwg-wrapper/scripts/kernel_version.zsh)
+show_time=$(${HOME}/.config/nwg-wrapper/scripts/current_date.zsh)
+show_uptime=$(${HOME}/.config/nwg-wrapper/scripts/show_uptime.zsh)
+show_volume=$(${HOME}/.config/nwg-wrapper/scripts/get_volume.zsh)
+show_disk=$(${HOME}/.config/nwg-wrapper/scripts/disk_info.zsh)
+show_memory=$(${HOME}/.config/nwg-wrapper/scripts/mem_info.zsh)
+show_cpu=$(${HOME}/.config/nwg-wrapper/scripts/cpu_info.zsh)
+show_gpu=$(${HOME}/.config/nwg-wrapper/scripts/gpu_info.zsh)
+show_updates=$(${HOME}/.config/nwg-wrapper/scripts/checkUpdates.zsh)
 echo '<b><span foreground="#cf9c19" face="UbuntuMono Nerd Font" size="12650"> 󰌽 </span></b><span foreground="#e25ee6" face="UbuntuMono Nerd Font" size="12650"> Kernel:</span><b><span foreground="#9ca8ce" face="UbuntuMono Nerd Font" size="12650">' ${show_kernel}'</span></b>' 
 echo '<b><span foreground="#cf9c19" face="UbuntuMono Nerd Font" size="12650"> 󱛡 </span></b><span foreground="#e25ee6" face="UbuntuMono Nerd Font" size="12650"> Time:</span><b><span foreground="#9ca8ce" face="UbuntuMono Nerd Font" size="12650"> '${show_time}'</span></b>'
 echo '<b><span foreground="#cf9c19" face="UbuntuMono Nerd Font" size="12650">  </span></b><span foreground="#e25ee6" face="UbuntuMono Nerd Font" size="12650"> Uptime:</span><b><span foreground="#9ca8ce" face="UbuntuMono Nerd Font" size="12650">' ${show_uptime}'</span></b>'
