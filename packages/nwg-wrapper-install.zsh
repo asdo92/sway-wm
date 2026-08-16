@@ -1,10 +1,12 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 #####################################################
 # Script to build and install nwg-wrapper on Debian #
-# Author: dmesg00 (dmesg00@duck.com)                    #
+# Author: dmesg00 (dmesg00@duck.com)                #
 # Last update: 01-07-2025                           #
 # ###################################################
+
+setopt SH_WORD_SPLIT NO_NOMATCH
 
 # Variables
 URL_Repo="https://github.com/nwg-piotr/nwg-wrapper.git"
@@ -13,7 +15,7 @@ dir_build="nwg-wrapper"
 # Check if you are root
 mkdir -p /etc/root &> /dev/null
 administrador=$?
-if [ ${administrador} -eq 0 ] ; then
+if (( ${administrador} == 0 )) ; then
   rm -rf /etc/root
 else
   echo "* nwg-wrapper install"

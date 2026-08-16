@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env zsh
+
+setopt SH_WORD_SPLIT NO_NOMATCH
 
 # Variables
 onedark_theme="https://github.com/joshdick/onedark.vim/archive/refs/heads/main.zip"
@@ -11,10 +13,10 @@ lightline_fdr="lightline.vim-master"
 
 # Function for create vimrc
 # Syntax: create_config <user>
-function create_config() {
+create_config() {
   vimrc_user="${1}"
   vimrc_home="/root"
-  if [ "${vimrc_user}" == "root" ] ; then
+  if [[ "${vimrc_user}" == "root" ]] ; then
     vimrc_home="/root"
   else
     vimrc_home="/home/${1}"
@@ -92,7 +94,7 @@ function create_config() {
   cp -rf /tmp/${onedark_fdr}/autoload/* ${vimrc_home}/.config/nvim/autoload/
   echo "# Created ${vimrc_home}/.config/nvim/autoload/onedark.vim"
   chown ${vimrc_user} -R ${vimrc_home}/.config/nvim 2> /dev/null
-  if [ "${2}" == "lightline" ] ; then
+  if [[ "${2}" == "lightline" ]] ; then
     mkdir -p ${vimrc_home}/.config/nvim/plugin
     mkdir -p ${vimrc_home}/.config/nvim/autoload
     cp -rf /tmp/${lightline_fdr}/plugin/* ${vimrc_home}/.config/nvim/plugin/
@@ -103,10 +105,10 @@ function create_config() {
 }
 
 # Check root permissions
-function rootMessage() {
+rootMessage() {
   mkdir -p /etc/root &> /dev/null
   administrator=$?
-  if [ ${administrator} -eq 0 ] ; then
+  if (( ${administrator} == 0 )) ; then
     rm -rf /etc/root
   else
     echo ""
@@ -116,10 +118,10 @@ function rootMessage() {
   fi
 }
 
-function check_dependencies() {
+check_dependencies() {
   wget --help > /dev/null
   error=$?
-  if [ ${error} -ne 0 ] ; then
+  if (( ${error} != 0 )) ; then
     echo ""    
     echo "* Command 'wget' not installed."
     echo ""
@@ -135,11 +137,11 @@ wget -c "${onedark_theme}" -O ${onedark_pkg}
 unzip ${onedark_pkg}
 wget -c "${lightline_repo}" -O ${lightline_pkg}
 unzip ${lightline_pkg}
-if [ ! -d ${onedark_fdr} ] ; then
+if [[ ! -d ${onedark_fdr} ]] ; then
   echo "# Failed downloading ${onedark_pkg} package"
   exit
 fi
-if [ ! -d ${lightline_fdr} ] ; then
+if [[ ! -d ${lightline_fdr} ]] ; then
   echo "# Failed downloading ${lightline_pkg} package"
   exit
 fi
@@ -154,14 +156,14 @@ lightline=1
 list_users=$(ls -1 /home)
 list_users="root ${list_users}"
 for current_user in ${list_users} ; do
-  if [ -d /home/${current_user} ] ; then
-    if [ ${lightline} -eq 0 ] ; then
+  if [[ -d /home/${current_user} ]] ; then
+    if (( ${lightline} == 0 )) ; then
       create_config "${current_user}" nolightline
     else
       create_config "${current_user}" lightline
     fi
-  elif [ -d /${current_user} ] ; then
-    if [ ${lightline} -eq 0 ] ; then
+  elif [[ -d /${current_user} ]] ; then
+    if (( ${lightline} == 0 )) ; then
       create_config "${current_user}" nolightline
     else
       create_config "${current_user}" lightline
