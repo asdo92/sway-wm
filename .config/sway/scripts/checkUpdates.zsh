@@ -48,7 +48,8 @@ if [[ -f /usr/bin/pacman ]] ; then
 # Check updates on Ubuntu/Debian/Devuan
 elif [[ -f /usr/bin/apt ]] ; then
   if (( ${checkupdate} >= ${checkupdates_run} )) ; then
-    sudo -A apt update > /dev/null 2>&1
+    #sudo -A apt update > /dev/null 2>&1
+    sudo apt update > /dev/null 2>&1
     echo "0" > ${checkupdates_file}
   fi
   if (( ${listupdate} >= ${listupdates_run} )) ; then
