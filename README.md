@@ -54,7 +54,7 @@ sway-wm - My tiling Sway configuration for Debian
       ```shell
       sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
       omz theme set refined
-      omz plugin enable zsh-interactive-cd zsh-navigation-tools colored-man-pages colorize command-not-found
+      omz plugin enable zsh-navigation-tools colored-man-pages colorize command-not-found
       cd ~/.oh-my-zsh/custom/plugins
       git clone https://github.com/zsh-users/zsh-syntax-highlighting.git 
       omz plugin enable zsh-syntax-highlighting
