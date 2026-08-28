@@ -23,6 +23,7 @@ sway-wm - My tiling Sway configuration for Debian
       ````
 
       ```shell
+      curl -L "https://gs.yougeek.dev/sway-wm/scripts/update-yazi.zsh" | sudo zsh
       curl -L "https://gs.yougeek.dev/sway-wm/scripts/update-firefox.zsh" | sudo zsh
       curl -L "https://gs.yougeek.dev/sway-wm/scripts/update-telegram.zsh" | sudo zsh
       curl -L "https://gs.yougeek.dev/sway-wm/scripts/update-electronmail.zsh" | sudo zsh
