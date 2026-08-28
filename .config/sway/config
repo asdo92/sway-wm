@@ -74,7 +74,7 @@ bindsym $mod+o exec --no-startup-id ~/.config/sway/wofi/wofi_drun
 bindsym $mod+q exec --no-startup-id ~/.config/sway/wofi/wofi_wrun
 bindsym $mod+x exec --no-startup-id wdisplays
 bindsym $mod+b exec --no-startup-id firefox
-bindsym $mod+n exec --no-startup-id pcmanfm
+bindsym $mod+n exec --no-startup-id foot -T yazi -e yazi ~/ ~/Downloads ~/Desktop
 bindsym $mod+p exec --no-startup-id ~/.config/sway/wofi/wofi_run
 bindsym $mod+g exec --no-startup-id geany
 bindsym $mod+m exec --no-startup-id telegram
