@@ -30,7 +30,7 @@ exec --no-startup-id "keepassxc &"
 exec --no-startup-id "electron-mail &"
 
 # Configure wallpaper
-exec --no-startup-id "swaybg -i ~/wallpapers/40.jpg -m fill"
+exec --no-startup-id "swaybg -i ~/wallpapers/forest-brown.jpg -m fill"
 
 # Start Screensaver (Also Super+Ctrl+Shift+l to poweroff/start screen)
 exec --no-startup-id ~/.config/sway/startwlrscreensaver.zsh
