@@ -1,0 +1,47 @@
+# Shell
+[shell]
+program = "/usr/bin/zsh"
+args = []
+
+# Fuente
+[fonts]
+family = "UbuntuMono Nerd Font"
+size = 15.4
+
+# Colores: paleta basada en Atom One Dark
+[colors]
+foreground = "#abb2bf"
+background = "#1e2127"
+cursor = "#abb2bf"
+
+# Colores normales
+black = "#282c34"
+red = "#e06c75"
+green = "#98c379"
+yellow = "#d19a66"
+blue = "#61afef"
+magenta = "#c678dd"
+cyan = "#56b6c2"
+white = "#979eab"
+
+# Colores brillantes
+light-black = "#666666"
+light-red = "#dca3a3"
+light-green = "#bfebbf"
+light-yellow = "#f0dfaf"
+light-blue = "#8cd0d3"
+light-magenta = "#fcace3"
+light-cyan = "#b3ffff"
+light-white = "#ffffff"
+
+# Cursor
+[cursor]
+shape = "beam"
+blinking = true
+blinking-interval = 800
+
+# Pestañas
+[navigation]
+#mode = "BottomTab"
+clickable = true
+hide-if-single = true
